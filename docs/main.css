@@ -1,0 +1,100 @@
+.github-corner svg {
+    z-index: 1000;
+}
+
+/* TODO: insert main styles of your demo here */
+
+.full-width {
+  width: 100%;
+}
+
+.codeblock {
+  margin-top: 10px;
+}
+
+.codeblock .syntax {
+  margin-top: 10px;
+}
+
+.syntax pre {
+  font-size: 12px !important;
+}
+
+#jsoneditor {
+  height: calc(100vh - 40px);
+  width: 100%;
+}
+
+.btn-wrapper {
+  display: table;
+  margin: 0 auto;
+}
+
+div.jsoneditor {
+  border: 1px solid #00bcd4;
+}
+
+div.jsoneditor-menu {
+  background-color: #00bcd4;
+  border-bottom: 1px solid #00bcd4;
+}
+
+.playground-container {
+
+}
+
+.aztec-container {
+  overflow-y: scroll;
+  height: calc(100vh - 64px);
+  padding: 0 20px;
+}
+
+.Resizer {
+    background: #000;
+    opacity: .2;
+    z-index: 1;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+}
+
+ .Resizer:hover {
+    -webkit-transition: all 2s ease;
+    transition: all 2s ease;
+}
+
+ .Resizer.horizontal {
+    height: 11px;
+    margin: -5px 0;
+    border-top: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid rgba(255, 255, 255, 0);
+    cursor: row-resize;
+    width: 100%;
+}
+
+.Resizer.horizontal:hover {
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+}
+
+.Resizer.vertical {
+    width: 11px;
+    margin: 0 -5px;
+    border-left: 5px solid rgba(255, 255, 255, 0);
+    border-right: 5px solid rgba(255, 255, 255, 0);
+    cursor: col-resize;
+}
+
+.Resizer.vertical:hover {
+    border-left: 5px solid rgba(0, 0, 0, 0.5);
+    border-right: 5px solid rgba(0, 0, 0, 0.5);
+}
+Resizer.disabled {
+  cursor: not-allowed;
+}
+Resizer.disabled:hover {
+  border-color: transparent;
+}
