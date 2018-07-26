@@ -21,7 +21,7 @@ class Datepicker extends React.Component {
     this.onUpdate = this.onUpdate.bind(this);
   }
   onUpdate(...args) {
-    console.log(args)
+    // console.log(args)
   }
   render() {
     const sourceCode = `

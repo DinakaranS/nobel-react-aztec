@@ -20,9 +20,9 @@ class Textfield extends React.Component {
     };
     this.onUpdate = this.onUpdate.bind(this);
   }
-  onUpdate(...args) {
-    console.log(args)
-  }
+  onUpdate = (...args) => {
+    // console.log(args)
+  };
   render() {
     const sourceCode = `
 import { Aztec } from 'react-aztec';
