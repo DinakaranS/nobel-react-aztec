@@ -1,4 +1,4 @@
-import { Aztec } from './components/Aztec';
+import { Aztec } from '../src/components/Aztec';
 
 module.exports = {
   Aztec
