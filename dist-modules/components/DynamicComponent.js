@@ -22,8 +22,8 @@ var DynamicComponent = exports.DynamicComponent = function DynamicComponent(prop
   return _react2.default.createElement(CustomComponent, props);
 };
 
-process.env.NODE_ENV !== "production" ? DynamicComponent.propTypes = {
+DynamicComponent.propTypes = {
   map: _react.PropTypes.string.isRequired
-} : void 0;
+};
 
 exports.default = DynamicComponent;

@@ -58,12 +58,12 @@ var Toggle = function (_React$Component) {
   return Toggle;
 }(_react2.default.Component);
 
-process.env.NODE_ENV !== "production" ? Toggle.propTypes = {
+Toggle.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
   control: _react.PropTypes.object,
   rules: _react.PropTypes.object,
   onToggle: _react.PropTypes.func
-} : void 0;
+};
 exports.default = Toggle;

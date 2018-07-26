@@ -189,7 +189,7 @@ var TimePicker = function (_React$Component) {
   return TimePicker;
 }(_react2.default.Component);
 
-process.env.NODE_ENV !== "production" ? TimePicker.propTypes = {
+TimePicker.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -203,5 +203,5 @@ process.env.NODE_ENV !== "production" ? TimePicker.propTypes = {
   onTouchTap: _react.PropTypes.func,
   wrapperStyle: _react.PropTypes.object,
   closeStyle: _react.PropTypes.object
-} : void 0;
+};
 exports.default = TimePicker;

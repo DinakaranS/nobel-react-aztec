@@ -336,7 +336,7 @@ var Aztec = exports.Aztec = function Aztec(props) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
+Aztec.propTypes = {
   data: _react.PropTypes.array.isRequired,
   library: _react.PropTypes.object,
   onChange: _react.PropTypes.func,
@@ -357,5 +357,5 @@ process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   displayErrors: _react.PropTypes.bool,
   patch: _react.PropTypes.object,
   guid: _react.PropTypes.string.isRequired
-} : void 0;
+};
 exports.default = Aztec;

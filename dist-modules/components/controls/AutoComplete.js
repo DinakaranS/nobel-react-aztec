@@ -185,7 +185,7 @@ var AutoComplete = function (_React$Component) {
   return AutoComplete;
 }(_react2.default.Component);
 
-process.env.NODE_ENV !== "production" ? AutoComplete.propTypes = {
+AutoComplete.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -197,5 +197,5 @@ process.env.NODE_ENV !== "production" ? AutoComplete.propTypes = {
   onFocus: _react.PropTypes.func,
   onBlur: _react.PropTypes.func,
   filter: _react.PropTypes.func
-} : void 0;
+};
 exports.default = AutoComplete;

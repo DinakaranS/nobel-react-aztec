@@ -58,12 +58,12 @@ var Checkbox = function (_React$Component) {
   return Checkbox;
 }(_react2.default.Component);
 
-process.env.NODE_ENV !== "production" ? Checkbox.propTypes = {
+Checkbox.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
   control: _react.PropTypes.object,
   rules: _react.PropTypes.object,
   onCheck: _react.PropTypes.func
-} : void 0;
+};
 exports.default = Checkbox;

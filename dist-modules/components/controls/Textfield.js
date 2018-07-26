@@ -223,7 +223,7 @@ var TextField = function (_React$Component) {
   return TextField;
 }(_react2.default.Component);
 
-process.env.NODE_ENV !== "production" ? TextField.propTypes = {
+TextField.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -234,5 +234,5 @@ process.env.NODE_ENV !== "production" ? TextField.propTypes = {
   onChange: _react.PropTypes.func,
   onFocus: _react.PropTypes.func,
   onBlur: _react.PropTypes.func
-} : void 0;
+};
 exports.default = TextField;
