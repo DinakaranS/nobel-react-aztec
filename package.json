@@ -76,6 +76,14 @@
   "peerDependencies": {
     "react": ">= 0.11.2 < 16.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DinakaranS/nobel-react-aztec.git"
+  },
+  "homepage": "https://github.com/DinakaranS/nobel-react-aztec",
+  "bugs": {
+    "url": "https://github.com/DinakaranS/nobel-react-aztec/issues"
+  },
   "jest": {
     "collectCoverage": true,
     "moduleFileExtensions": [
