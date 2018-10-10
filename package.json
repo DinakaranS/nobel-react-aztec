@@ -3,7 +3,7 @@
   "description": "Material UI based dynamic form component for React using JSON-Schema",
   "author": "Dinakaran S",
   "user": "dinakaran",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "start": "webpack-dev-server --port 8000",
     "test": "jest --",
