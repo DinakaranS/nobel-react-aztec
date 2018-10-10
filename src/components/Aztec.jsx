@@ -1,11 +1,12 @@
+/* eslint-disable react/destructuring-assignment,prefer-destructuring */
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import { Row, Col } from 'react-flexbox-grid';
 
 import { DynamicComponent } from './DynamicComponent';
-import { generateLayout } from './../helpers/filter';
-import mui from './../config/mui';
-import validation from './../helpers/validation';
+import filter from '../helpers/filter';
+import mui from '../config/mui';
+import validation from '../helpers/validation';
 
 const LIBMap = {
   MUI: {
@@ -155,7 +156,7 @@ export const Aztec = (props) => {
     response[props.guid] = response[props.guid] || {};
     response[props.guid] = getInitialValues(data);
   }
-  const layout = generateLayout(data);
+  const layout = filter.generateLayout(data);
   config.modules = props.library;
   return (
     <div>
@@ -233,6 +234,7 @@ export const Aztec = (props) => {
                 attributes={field.props}
                 rules={field.rules}
                 formatter={field.formatter}
+// eslint-disable-next-line react/prop-types
                 fetchResponse={props.fetchResponse}
                 onChange={
                   (...args) => {

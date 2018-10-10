@@ -17,13 +17,15 @@ var _reactFlexboxGrid = require('react-flexbox-grid');
 
 var _DynamicComponent = require('./DynamicComponent');
 
-var _filter = require('./../helpers/filter');
+var _filter = require('../helpers/filter');
 
-var _mui = require('./../config/mui');
+var _filter2 = _interopRequireDefault(_filter);
+
+var _mui = require('../config/mui');
 
 var _mui2 = _interopRequireDefault(_mui);
 
-var _validation = require('./../helpers/validation');
+var _validation = require('../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
 
@@ -33,7 +35,8 @@ var LIBMap = {
   MUI: {
     map: _mui2.default
   }
-};
+}; /* eslint-disable react/destructuring-assignment,prefer-destructuring */
+
 
 var response = {};
 
@@ -186,7 +189,7 @@ var Aztec = exports.Aztec = function Aztec(props) {
     response[props.guid] = response[props.guid] || {};
     response[props.guid] = getInitialValues(data);
   }
-  var layout = (0, _filter.generateLayout)(data);
+  var layout = _filter2.default.generateLayout(data);
   config.modules = props.library;
   return _react2.default.createElement(
     'div',
@@ -272,8 +275,9 @@ var Aztec = exports.Aztec = function Aztec(props) {
           library: config.modules,
           attributes: field.props,
           rules: field.rules,
-          formatter: field.formatter,
-          fetchResponse: props.fetchResponse,
+          formatter: field.formatter
+          // eslint-disable-next-line react/prop-types
+          , fetchResponse: props.fetchResponse,
           onChange: function onChange() {
             for (var _len7 = arguments.length, args = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
               args[_key7] = arguments[_key7];
