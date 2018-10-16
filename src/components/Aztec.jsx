@@ -1,4 +1,3 @@
-/* eslint-disable react/destructuring-assignment,prefer-destructuring */
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import { Row, Col } from 'react-flexbox-grid';
@@ -143,21 +142,22 @@ const handleSubmit = (callback, data, guid) => {
 /** Aztec */
 export const Aztec = (props) => {
   const config = LIBMap.MUI;
-  let data = props.data;
-  if (!props.forceUpdate) {
+  const p = props;
+  let data = p.data;
+  if (!p.forceUpdate) {
     let errors = [];
-    if (props.displayErrors) {
-      errors = getErrors(props.data, props.guid);
+    if (p.displayErrors) {
+      errors = getErrors(p.data, p.guid);
     }
-    response[props.guid] = response[props.guid] || {};
-    updateResponse(props.data, props.patch, props.guid);
-    data = getCurrentFormData(props.data, errors, props.guid);
+    response[p.guid] = response[p.guid] || {};
+    updateResponse(p.data, p.patch, p.guid);
+    data = getCurrentFormData(p.data, errors, p.guid);
   } else {
-    response[props.guid] = response[props.guid] || {};
-    response[props.guid] = getInitialValues(data);
+    response[p.guid] = response[p.guid] || {};
+    response[p.guid] = getInitialValues(data);
   }
   const layout = filter.generateLayout(data);
-  config.modules = props.library;
+  config.modules = p.library;
   return (
     <div>
       {
@@ -234,7 +234,6 @@ export const Aztec = (props) => {
                 attributes={field.props}
                 rules={field.rules}
                 formatter={field.formatter}
-// eslint-disable-next-line react/prop-types
                 fetchResponse={props.fetchResponse}
                 onChange={
                   (...args) => {

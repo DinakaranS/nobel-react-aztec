@@ -35,8 +35,7 @@ var LIBMap = {
   MUI: {
     map: _mui2.default
   }
-}; /* eslint-disable react/destructuring-assignment,prefer-destructuring */
-
+};
 
 var response = {};
 
@@ -176,21 +175,22 @@ var handleSubmit = function handleSubmit(callback, data, guid) {
 /** Aztec */
 var Aztec = exports.Aztec = function Aztec(props) {
   var config = LIBMap.MUI;
-  var data = props.data;
-  if (!props.forceUpdate) {
+  var p = props;
+  var data = p.data;
+  if (!p.forceUpdate) {
     var errors = [];
-    if (props.displayErrors) {
-      errors = getErrors(props.data, props.guid);
+    if (p.displayErrors) {
+      errors = getErrors(p.data, p.guid);
     }
-    response[props.guid] = response[props.guid] || {};
-    updateResponse(props.data, props.patch, props.guid);
-    data = getCurrentFormData(props.data, errors, props.guid);
+    response[p.guid] = response[p.guid] || {};
+    updateResponse(p.data, p.patch, p.guid);
+    data = getCurrentFormData(p.data, errors, p.guid);
   } else {
-    response[props.guid] = response[props.guid] || {};
-    response[props.guid] = getInitialValues(data);
+    response[p.guid] = response[p.guid] || {};
+    response[p.guid] = getInitialValues(data);
   }
   var layout = _filter2.default.generateLayout(data);
-  config.modules = props.library;
+  config.modules = p.library;
   return _react2.default.createElement(
     'div',
     null,
@@ -275,9 +275,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
           library: config.modules,
           attributes: field.props,
           rules: field.rules,
-          formatter: field.formatter
-          // eslint-disable-next-line react/prop-types
-          , fetchResponse: props.fetchResponse,
+          formatter: field.formatter,
+          fetchResponse: props.fetchResponse,
           onChange: function onChange() {
             for (var _len7 = arguments.length, args = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
               args[_key7] = arguments[_key7];

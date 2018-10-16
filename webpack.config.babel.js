@@ -31,7 +31,7 @@ const common = {
   module: {
     preLoaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         loaders: ['eslint'],
         include: [
           config.paths.docs,
@@ -102,7 +102,7 @@ if (TARGET === 'start') {
           loaders: ['style', 'css']
         },
         {
-          test: /\.jsx?$/,
+          test: /\.(js|jsx)$/,
           loaders: ['babel?cacheDirectory'],
           include: [
             config.paths.docs,
@@ -164,7 +164,7 @@ if (TARGET === 'gh-pages' || TARGET === 'gh-pages:stats') {
           loader: ExtractTextPlugin.extract('style', 'css')
         },
         {
-          test: /\.jsx?$/,
+          test: /\.(js|jsx)$/,
           loaders: ['babel'],
           include: [
             config.paths.docs,
@@ -195,9 +195,17 @@ const distCommon = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: config.paths.src
+        test: /\.css$/,
+        loaders: ['style', 'css']
+      },
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel',
+        include: config.paths.src,
+        query: {
+          cacheDirectory: true,
+          presets: ['react', 'es2015']
+        }
       }
     ]
   },
