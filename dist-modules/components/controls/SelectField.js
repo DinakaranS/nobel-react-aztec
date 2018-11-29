@@ -16,6 +16,10 @@ var _validation = require('./../../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
 
+var _TooltipComponent = require('../TooltipComponent');
+
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -122,11 +126,16 @@ var SelectField = function (_React$Component) {
       var SELECTFIELD = this.props.library[props.component];
       var OPTION = this.props.library[props.option];
       return _react2.default.createElement(
-        SELECTFIELD,
-        _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange }),
-        this.props.control.options.map(function (option, index) {
-          return _react2.default.createElement(OPTION, _extends({}, option, { key: index }));
-        })
+        'div',
+        { style: { display: 'flex' } },
+        _react2.default.createElement(
+          SELECTFIELD,
+          _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange }),
+          this.props.control.options.map(function (option, index) {
+            return _react2.default.createElement(OPTION, _extends({}, option, { key: index }));
+          })
+        ),
+        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
       );
     }
   }]);

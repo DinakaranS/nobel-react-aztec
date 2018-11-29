@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import numeral from 'numeral';
 import validation from './../../helpers/validation';
+import TooltipComponent from '../TooltipComponent';
 
 /** Textfield Component */
 class TextField extends React.Component {
@@ -132,7 +133,10 @@ class TextField extends React.Component {
   render() {
     const props = this.props;
     const TEXTFIELD = props.library[props.component];
-    return <TEXTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} onBlur={this.onBlur} onFocus={this.onFocus} />;
+    return (<div style={{ display: 'flex' }}>
+      <TEXTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} onBlur={this.onBlur} onFocus={this.onFocus} />
+      {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+    </div>);
   }
 }
 

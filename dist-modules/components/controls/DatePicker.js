@@ -22,9 +22,9 @@ var _clear2 = _interopRequireDefault(_clear);
 
 var _colors = require('material-ui/styles/colors');
 
-var _validation = require('./../../helpers/validation');
+var _TooltipComponent = require('../TooltipComponent');
 
-var _validation2 = _interopRequireDefault(_validation);
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,6 +33,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import validation from './../../helpers/validation';
+
 
 function transformAttrs(props) {
   var _props$attributes = props.attributes,
@@ -197,7 +199,8 @@ var DatePicker = function (_React$Component) {
         'div',
         { style: wrapperStyle },
         _react2.default.createElement(DATEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap, formatDate: this.formatDate })),
-        _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear })
+        _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear }),
+        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
       );
     }
   }]);

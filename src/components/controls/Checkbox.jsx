@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import TooltipComponent from '../TooltipComponent';
 
 /** Checkbox Component */
 class Checkbox extends React.Component {
@@ -14,9 +15,10 @@ class Checkbox extends React.Component {
   render() {
     const props = this.props;
     const CHECKBOX = props.library[props.component];
-    return (
+    return (<div style={{ display: 'flex' }} >
       <CHECKBOX {...props.attributes} onCheck={this.onCheck} />
-    );
+      {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+    </div>);
   }
 }
 

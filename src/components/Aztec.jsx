@@ -6,7 +6,6 @@ import { DynamicComponent } from './DynamicComponent';
 import { generateLayout } from './../helpers/filter';
 import mui from './../config/mui';
 import validation from './../helpers/validation';
-import TooltipComponent from './TooltipComponent';
 
 const LIBMap = {
   MUI: {
@@ -165,59 +164,56 @@ export const Aztec = (props) => {
           <Row key={i}>
             {
               row.map((field, index) => (
-                <Col xs={field.layout.xs ? field.layout.xs.col : ''} sm={field.layout.sm ? field.layout.sm.col : ''} md={field.layout.md ? field.layout.md.col : ''} lg={field.layout.lg ? field.layout.lg.col : ''} style={field.style} className={`${field.className} ${(field.visible === false) ? 'hidden' : 'show'}`} key={index}>
-                  <div style={{ display: 'flex' }}>
-                    <DynamicComponent
-                      component={config.map[field.type].type}
-                      map={config.map[field.type].map}
-                      option={config.map[field.type].options ? config.map[field.type].options.type : ''}
-                      control={field}
-                      library={config.modules}
-                      attributes={field.props}
-                      rules={field.rules}
-                      formatter={field.formatter}
-                      onChange={
-                        (...args) => {
-                          handleData(props.guid, ...args);
-                          if (typeof props.onChange === 'function') {
-                            props.onChange(...args);
-                          }
+                <Col xs={field.layout.xs ? field.layout.xs.col : ''} sm={field.layout.sm ? field.layout.sm.col : ''} md={field.layout.md ? field.layout.md.col : ''} lg={field.layout.lg ? field.layout.lg.col : ''} style={field.style} className={`${field.className} ${(field.visible === false) ? 'hidden' : 'show'}`} key={index} >
+                  <DynamicComponent
+                    component={config.map[field.type].type}
+                    map={config.map[field.type].map}
+                    option={config.map[field.type].options ? config.map[field.type].options.type : ''}
+                    control={field}
+                    library={config.modules}
+                    attributes={field.props}
+                    rules={field.rules}
+                    formatter={field.formatter}
+                    onChange={
+                      (...args) => {
+                        handleData(props.guid, ...args);
+                        if (typeof props.onChange === 'function') {
+                          props.onChange(...args);
                         }
                       }
-                      onBlur={props.onBlur}
-                      onFocus={props.onFocus}
-                      onCheck={
-                        (...args) => {
-                          handleData(props.guid, ...args);
-                          if (typeof props.onCheck === 'function') {
-                            props.onCheck(...args);
-                          }
+                    }
+                    onBlur={props.onBlur}
+                    onFocus={props.onFocus}
+                    onCheck={
+                      (...args) => {
+                        handleData(props.guid, ...args);
+                        if (typeof props.onCheck === 'function') {
+                          props.onCheck(...args);
                         }
                       }
-                      onToggle={
-                        (...args) => {
-                          handleData(props.guid, ...args);
-                          if (typeof props.onToggle === 'function') {
-                            props.onToggle(...args);
-                          }
+                    }
+                    onToggle={
+                      (...args) => {
+                        handleData(props.guid, ...args);
+                        if (typeof props.onToggle === 'function') {
+                          props.onToggle(...args);
                         }
                       }
-                      onShow={props.onShow}
-                      onDismiss={props.onDismiss}
-                      onTouchTap={props.onTouchTap}
-                      onUpdateInput={
-                        (...args) => {
-                          handleData(props.guid, ...args);
-                          if (typeof props.onUpdateInput === 'function') {
-                            props.onUpdateInput(...args);
-                          }
+                    }
+                    onShow={props.onShow}
+                    onDismiss={props.onDismiss}
+                    onTouchTap={props.onTouchTap}
+                    onUpdateInput={
+                      (...args) => {
+                        handleData(props.guid, ...args);
+                        if (typeof props.onUpdateInput === 'function') {
+                          props.onUpdateInput(...args);
                         }
                       }
-                      onNewRequest={props.onNewRequest}
-                      filter={props.filter}
-                    />
-                    {field.props.tooltip && <TooltipComponent tooltip={field.props.tooltip} />}
-                  </div>
+                    }
+                    onNewRequest={props.onNewRequest}
+                    filter={props.filter}
+                  />
                 </Col>
               ))
             }
@@ -227,61 +223,58 @@ export const Aztec = (props) => {
       {
         layout.worows.map((field, index) => (
           <div key={index} style={field.style} className={`${field.className} ${(field.visible === false) ? 'hidden' : 'show'}`}>
-            <div style={{ display: 'flex' }}>
-              {
-                <DynamicComponent
-                  component={config.map[field.type].type}
-                  map={config.map[field.type].map}
-                  option={config.map[field.type].options ? config.map[field.type].options.type : ''}
-                  control={field}
-                  library={config.modules}
-                  attributes={field.props}
-                  rules={field.rules}
-                  formatter={field.formatter}
-                  fetchResponse={props.fetchResponse}
-                  onChange={
-                    (...args) => {
-                      handleData(props.guid, ...args);
-                      if (typeof props.onChange === 'function') {
-                        props.onChange(...args);
-                      }
+            {
+              <DynamicComponent
+                component={config.map[field.type].type}
+                map={config.map[field.type].map}
+                option={config.map[field.type].options ? config.map[field.type].options.type : ''}
+                control={field}
+                library={config.modules}
+                attributes={field.props}
+                rules={field.rules}
+                formatter={field.formatter}
+                fetchResponse={props.fetchResponse}
+                onChange={
+                  (...args) => {
+                    handleData(props.guid, ...args);
+                    if (typeof props.onChange === 'function') {
+                      props.onChange(...args);
                     }
                   }
-                  onBlur={props.onBlur}
-                  onFocus={props.onFocus}
-                  onCheck={
-                    (...args) => {
-                      handleData(props.guid, ...args);
-                      if (typeof props.onCheck === 'function') {
-                        props.onCheck(...args);
-                      }
+                }
+                onBlur={props.onBlur}
+                onFocus={props.onFocus}
+                onCheck={
+                  (...args) => {
+                    handleData(props.guid, ...args);
+                    if (typeof props.onCheck === 'function') {
+                      props.onCheck(...args);
                     }
                   }
-                  onToggle={
-                    (...args) => {
-                      handleData(props.guid, ...args);
-                      if (typeof props.onToggle === 'function') {
-                        props.onToggle(...args);
-                      }
+                }
+                onToggle={
+                  (...args) => {
+                    handleData(props.guid, ...args);
+                    if (typeof props.onToggle === 'function') {
+                      props.onToggle(...args);
                     }
                   }
-                  onShow={props.onShow}
-                  onDismiss={props.onDismiss}
-                  onTouchTap={props.onTouchTap}
-                  onUpdateInput={
-                    (...args) => {
-                      handleData(props.guid, ...args);
-                      if (typeof props.onUpdateInput === 'function') {
-                        props.onUpdateInput(...args);
-                      }
+                }
+                onShow={props.onShow}
+                onDismiss={props.onDismiss}
+                onTouchTap={props.onTouchTap}
+                onUpdateInput={
+                  (...args) => {
+                    handleData(props.guid, ...args);
+                    if (typeof props.onUpdateInput === 'function') {
+                      props.onUpdateInput(...args);
                     }
                   }
-                  onNewRequest={props.onNewRequest}
-                  filter={props.filter}
-                />
-              }
-              {field.props.tooltip && <TooltipComponent tooltip={field.props.tooltip} />}
-            </div>
+                }
+                onNewRequest={props.onNewRequest}
+                filter={props.filter}
+              />
+            }
           </div>
         ))
       }

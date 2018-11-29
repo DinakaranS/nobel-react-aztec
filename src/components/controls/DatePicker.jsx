@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import moment from 'moment';
 import ActionClear from 'material-ui/svg-icons/content/clear';
 import { grey500 } from 'material-ui/styles/colors';
-import validation from './../../helpers/validation';
+// import validation from './../../helpers/validation';
+import TooltipComponent from '../TooltipComponent';
 
 function transformAttrs(props) {
   const {
@@ -114,8 +115,8 @@ class DatePicker extends React.Component {
       <div style={wrapperStyle}>
         <DATEPICKER {...this.state.attributes} errorText={this.state.errorText} onChange={this.onChange} onFocus={this.onFocus} onShow={this.onShow} onDismiss={this.onDismiss} onTouchTap={this.onTouchTap} formatDate={this.formatDate} />
         <ActionClear color={grey500} style={closeStyle} onClick={this.clear} />
-      </div>
-    );
+        {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+      </div>);
   }
 }
 

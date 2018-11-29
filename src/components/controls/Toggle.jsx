@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import TooltipComponent from '../TooltipComponent';
 
 /** Toggle Component */
 class Toggle extends React.Component {
@@ -14,9 +15,10 @@ class Toggle extends React.Component {
   render() {
     const props = this.props;
     const TOGGLE = props.library[props.component];
-    return (
+    return (<div style={{ display: 'flex' }}>
       <TOGGLE {...props.attributes} onToggle={this.onToggle} />
-    );
+      {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+    </div>)
   }
 }
 

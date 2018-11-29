@@ -20,6 +20,10 @@ var _validation = require('./../../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
 
+var _TooltipComponent = require('../TooltipComponent');
+
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -216,7 +220,12 @@ var TextField = function (_React$Component) {
     value: function render() {
       var props = this.props;
       var TEXTFIELD = props.library[props.component];
-      return _react2.default.createElement(TEXTFIELD, _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus }));
+      return _react2.default.createElement(
+        'div',
+        { style: { display: 'flex' } },
+        _react2.default.createElement(TEXTFIELD, _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange, onBlur: this.onBlur, onFocus: this.onFocus })),
+        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
+      );
     }
   }]);
 

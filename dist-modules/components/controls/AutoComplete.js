@@ -16,6 +16,10 @@ var _validation = require('./../../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
 
+var _TooltipComponent = require('../TooltipComponent');
+
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -178,7 +182,12 @@ var AutoComplete = function (_React$Component) {
       var props = this.props;
       var AUTOCOMPLETE = props.library[props.component];
       var filter = typeof this.props.filter === 'function' ? this.props.filter : AUTOCOMPLETE[props.attributes.filter];
-      return _react2.default.createElement(AUTOCOMPLETE, _extends({}, props.attributes, { value: this.state.value, filter: filter, errorText: this.state.errorText, onBlur: this.onBlur, onFocus: this.onFocus, onUpdateInput: this.onUpdateInput, onNewRequest: this.onNewRequest }));
+      return _react2.default.createElement(
+        'div',
+        { style: { display: 'flex' } },
+        _react2.default.createElement(AUTOCOMPLETE, _extends({}, props.attributes, { value: this.state.value, filter: filter, errorText: this.state.errorText, onBlur: this.onBlur, onFocus: this.onFocus, onUpdateInput: this.onUpdateInput, onNewRequest: this.onNewRequest })),
+        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
+      );
     }
   }]);
 

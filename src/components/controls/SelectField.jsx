@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import validation from './../../helpers/validation';
+import TooltipComponent from '../TooltipComponent';
 
 /** SelectField Component */
 class SelectField extends React.Component {
@@ -11,12 +12,14 @@ class SelectField extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
   }
+
   componentWillReceiveProps(props) {
     this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || ''
     };
   }
+
   validate(value) {
     let isValid = true;
     if (this.props.rules && this.props.rules.validation) {
@@ -35,6 +38,7 @@ class SelectField extends React.Component {
       message: ''
     };
   }
+
   onChange(...args) {
     const validator = this.validate(args[2]);
     if (!validator.isValid) {
@@ -52,20 +56,24 @@ class SelectField extends React.Component {
       this.props.onChange(this.props.control, ...args);
     }
   }
+
   render() {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
     const OPTION = this.props.library[props.option];
     return (
-      <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange}>
-        {this.props.control.options.map((option, index) => {
-          return (
-            <OPTION {...option} key={index}>
-              {}
-            </OPTION>
-          );
-        })}
-      </SELECTFIELD>
+      <div style={{ display: 'flex' }} >
+        <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange}>
+          {this.props.control.options.map((option, index) => {
+            return (
+              <OPTION {...option} key={index}>
+                {}
+              </OPTION>
+            );
+          })}
+        </SELECTFIELD>
+        {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+      </div>
     );
   }
 }

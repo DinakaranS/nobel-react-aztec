@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
-import validation from './../../helpers/validation';
+// import validation from './../../helpers/validation';
 import ActionClear from 'material-ui/svg-icons/content/clear';
 import { grey500 } from 'material-ui/styles/colors';
+// import TooltipComponent from '../TooltipComponent';
 
 function transformAttrs(props) {
   const {

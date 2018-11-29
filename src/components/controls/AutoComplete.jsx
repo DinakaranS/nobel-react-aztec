@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import validation from './../../helpers/validation';
+import TooltipComponent from '../TooltipComponent';
 
 /** AutoComplete Component */
 class AutoComplete extends React.Component {
@@ -82,7 +83,10 @@ class AutoComplete extends React.Component {
     const props = this.props;
     const AUTOCOMPLETE = props.library[props.component];
     const filter = (typeof this.props.filter === 'function') ? this.props.filter : AUTOCOMPLETE[props.attributes.filter];
-    return <AUTOCOMPLETE {...props.attributes} value={this.state.value} filter={filter} errorText={this.state.errorText} onBlur={this.onBlur} onFocus={this.onFocus} onUpdateInput={this.onUpdateInput} onNewRequest={this.onNewRequest} />;
+    return (<div style={{ display: 'flex' }} >
+      <AUTOCOMPLETE {...props.attributes} value={this.state.value} filter={filter} errorText={this.state.errorText} onBlur={this.onBlur} onFocus={this.onFocus} onUpdateInput={this.onUpdateInput} onNewRequest={this.onNewRequest} />
+      {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+    </div>);
   }
 }
 

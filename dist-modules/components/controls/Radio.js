@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _TooltipComponent = require('../TooltipComponent');
+
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56,9 +60,14 @@ var Radio = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(
-          'h3',
-          { style: props.attributes.titleStyle },
-          props.attributes.title
+          'div',
+          { style: { display: 'flex' } },
+          _react2.default.createElement(
+            'h3',
+            { style: props.attributes.titleStyle },
+            props.attributes.title
+          ),
+          this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
         ),
         _react2.default.createElement(
           RADIO,
