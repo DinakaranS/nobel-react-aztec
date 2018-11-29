@@ -10,6 +10,11 @@ const mui = [
       "fullWidth": true,
       "style": {
         "display": "table"
+      },
+      "tooltip": {
+        "imagestyle":{ width: "20px", height: "20px", top: "15px"},
+        "contentstyle":{ width: '150px', height: "25px", },
+        "content":"I am going home early today, are you coming with me ?"
       }
     },
     "options": [

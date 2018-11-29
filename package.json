@@ -3,7 +3,7 @@
   "description": "Material UI based dynamic form component for React using JSON-Schema",
   "author": "Dinakaran S",
   "user": "dinakaran",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "start": "webpack-dev-server --port 8000",
     "test": "jest --",
@@ -63,6 +63,7 @@
     "react-github-corner": "^0.3.0",
     "react-highlight": "^0.9.0",
     "react-json-tree": "^0.10.0",
+    "react-simple-tooltip": "^2.3.3",
     "react-split-pane": "^0.1.57",
     "react-tap-event-plugin": "^2.0.1",
     "rimraf": "^2.5.4",
