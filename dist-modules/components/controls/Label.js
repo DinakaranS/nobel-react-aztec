@@ -23,7 +23,7 @@ var Label = function Label(props) {
   );
 };
 
-Label.propTypes = {
+process.env.NODE_ENV !== "production" ? Label.propTypes = {
   attributes: _react.PropTypes.object
-};
+} : void 0;
 exports.default = Label;

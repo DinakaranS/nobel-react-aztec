@@ -26,7 +26,7 @@ class Demo extends React.Component {
     this.triggerSubmit = this.triggerSubmit.bind(this);
   }
   onUpdate(...args) {
-    // console.log(...args);
+    console.log(...args);
   }
   onSubmit(response, errors, formData) {
     this.setState({

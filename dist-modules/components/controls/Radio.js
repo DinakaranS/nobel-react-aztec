@@ -74,7 +74,7 @@ var Radio = function (_React$Component) {
   return Radio;
 }(_react2.default.Component);
 
-Radio.propTypes = {
+process.env.NODE_ENV !== "production" ? Radio.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -82,5 +82,5 @@ Radio.propTypes = {
   option: _react.PropTypes.string.isRequired,
   rules: _react.PropTypes.object,
   onChange: _react.PropTypes.func
-};
+} : void 0;
 exports.default = Radio;

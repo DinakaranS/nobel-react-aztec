@@ -17,15 +17,13 @@ var _reactFlexboxGrid = require('react-flexbox-grid');
 
 var _DynamicComponent = require('./DynamicComponent');
 
-var _filter = require('../helpers/filter');
+var _filter = require('./../helpers/filter');
 
-var _filter2 = _interopRequireDefault(_filter);
-
-var _mui = require('../config/mui');
+var _mui = require('./../config/mui');
 
 var _mui2 = _interopRequireDefault(_mui);
 
-var _validation = require('../helpers/validation');
+var _validation = require('./../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
 
@@ -175,22 +173,21 @@ var handleSubmit = function handleSubmit(callback, data, guid) {
 /** Aztec */
 var Aztec = exports.Aztec = function Aztec(props) {
   var config = LIBMap.MUI;
-  var p = props;
-  var data = p.data;
-  if (!p.forceUpdate) {
+  var data = props.data;
+  if (!props.forceUpdate) {
     var errors = [];
-    if (p.displayErrors) {
-      errors = getErrors(p.data, p.guid);
+    if (props.displayErrors) {
+      errors = getErrors(props.data, props.guid);
     }
-    response[p.guid] = response[p.guid] || {};
-    updateResponse(p.data, p.patch, p.guid);
-    data = getCurrentFormData(p.data, errors, p.guid);
+    response[props.guid] = response[props.guid] || {};
+    updateResponse(props.data, props.patch, props.guid);
+    data = getCurrentFormData(props.data, errors, props.guid);
   } else {
-    response[p.guid] = response[p.guid] || {};
-    response[p.guid] = getInitialValues(data);
+    response[props.guid] = response[props.guid] || {};
+    response[props.guid] = getInitialValues(data);
   }
-  var layout = _filter2.default.generateLayout(data);
-  config.modules = p.library;
+  var layout = (0, _filter.generateLayout)(data);
+  config.modules = props.library;
   return _react2.default.createElement(
     'div',
     null,
@@ -339,7 +336,7 @@ var Aztec = exports.Aztec = function Aztec(props) {
   );
 };
 
-Aztec.propTypes = {
+process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   data: _react.PropTypes.array.isRequired,
   library: _react.PropTypes.object,
   onChange: _react.PropTypes.func,
@@ -360,5 +357,5 @@ Aztec.propTypes = {
   displayErrors: _react.PropTypes.bool,
   patch: _react.PropTypes.object,
   guid: _react.PropTypes.string.isRequired
-};
+} : void 0;
 exports.default = Aztec;

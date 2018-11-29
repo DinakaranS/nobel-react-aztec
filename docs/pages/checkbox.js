@@ -22,7 +22,7 @@ class Checkbox extends React.Component {
   }
   onUpdate(...args) {
     const control = args[0];
-    // console.log(args);
+    console.log(args);
   }
   render() {
     const sourceCode = `

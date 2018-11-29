@@ -205,7 +205,7 @@ var DatePicker = function (_React$Component) {
   return DatePicker;
 }(_react2.default.Component);
 
-DatePicker.propTypes = {
+process.env.NODE_ENV !== "production" ? DatePicker.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -220,5 +220,5 @@ DatePicker.propTypes = {
   format: _react.PropTypes.string,
   wrapperStyle: _react.PropTypes.object,
   closeStyle: _react.PropTypes.object
-};
+} : void 0;
 exports.default = DatePicker;

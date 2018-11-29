@@ -85,7 +85,7 @@ class Playground extends React.Component {
         };
         reader.readAsText(event.target.files[0]);
       } else {
-        // alert('unsuported file format!!!');
+        alert('unsuported file format!!!');
       }
     }
   }
@@ -119,7 +119,7 @@ class Playground extends React.Component {
     }
   }
   onSave() {
-    // alert('not yet implemented!!!');
+    alert('not yet implemented!!!');
   }
   toggleView() {
     this.setState({

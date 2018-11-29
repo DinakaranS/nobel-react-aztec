@@ -134,7 +134,7 @@ var SelectField = function (_React$Component) {
   return SelectField;
 }(_react2.default.Component);
 
-SelectField.propTypes = {
+process.env.NODE_ENV !== "production" ? SelectField.propTypes = {
   library: _react.PropTypes.object,
   component: _react.PropTypes.string.isRequired,
   attributes: _react.PropTypes.object,
@@ -142,5 +142,5 @@ SelectField.propTypes = {
   option: _react.PropTypes.string.isRequired,
   rules: _react.PropTypes.object,
   onChange: _react.PropTypes.func
-};
+} : void 0;
 exports.default = SelectField;

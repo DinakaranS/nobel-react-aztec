@@ -3,9 +3,9 @@ import _ from 'lodash';
 import { Row, Col } from 'react-flexbox-grid';
 
 import { DynamicComponent } from './DynamicComponent';
-import filter from '../helpers/filter';
-import mui from '../config/mui';
-import validation from '../helpers/validation';
+import { generateLayout } from './../helpers/filter';
+import mui from './../config/mui';
+import validation from './../helpers/validation';
 
 const LIBMap = {
   MUI: {
@@ -142,22 +142,21 @@ const handleSubmit = (callback, data, guid) => {
 /** Aztec */
 export const Aztec = (props) => {
   const config = LIBMap.MUI;
-  const p = props;
-  let data = p.data;
-  if (!p.forceUpdate) {
+  let data = props.data;
+  if (!props.forceUpdate) {
     let errors = [];
-    if (p.displayErrors) {
-      errors = getErrors(p.data, p.guid);
+    if (props.displayErrors) {
+      errors = getErrors(props.data, props.guid);
     }
-    response[p.guid] = response[p.guid] || {};
-    updateResponse(p.data, p.patch, p.guid);
-    data = getCurrentFormData(p.data, errors, p.guid);
+    response[props.guid] = response[props.guid] || {};
+    updateResponse(props.data, props.patch, props.guid);
+    data = getCurrentFormData(props.data, errors, props.guid);
   } else {
-    response[p.guid] = response[p.guid] || {};
-    response[p.guid] = getInitialValues(data);
+    response[props.guid] = response[props.guid] || {};
+    response[props.guid] = getInitialValues(data);
   }
-  const layout = filter.generateLayout(data);
-  config.modules = p.library;
+  const layout = generateLayout(data);
+  config.modules = props.library;
   return (
     <div>
       {
