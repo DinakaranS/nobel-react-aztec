@@ -22,6 +22,10 @@ var _clear2 = _interopRequireDefault(_clear);
 
 var _colors = require('material-ui/styles/colors');
 
+var _TooltipComponent = require('../TooltipComponent');
+
+var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31,8 +35,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 // import validation from './../../helpers/validation';
 
-
-// import TooltipComponent from '../TooltipComponent';
 
 function transformAttrs(props) {
   var value = props.attributes.value;
@@ -179,9 +181,14 @@ var TimePicker = function (_React$Component) {
       }, props.attributes.closeStyle);
       return _react2.default.createElement(
         'div',
-        { style: wrapperStyle },
-        _react2.default.createElement(TIMEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap })),
-        _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear })
+        { style: { display: 'flex' } },
+        _react2.default.createElement(
+          'div',
+          { style: wrapperStyle },
+          _react2.default.createElement(TIMEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap })),
+          _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear })
+        ),
+        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
       );
     }
   }]);

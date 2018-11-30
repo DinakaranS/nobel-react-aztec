@@ -197,9 +197,13 @@ var DatePicker = function (_React$Component) {
       }, props.attributes.closeStyle);
       return _react2.default.createElement(
         'div',
-        { style: wrapperStyle },
-        _react2.default.createElement(DATEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap, formatDate: this.formatDate })),
-        _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear }),
+        { style: { display: 'flex' } },
+        _react2.default.createElement(
+          'div',
+          { style: wrapperStyle },
+          _react2.default.createElement(DATEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap, formatDate: this.formatDate })),
+          _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear })
+        ),
         this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
       );
     }
