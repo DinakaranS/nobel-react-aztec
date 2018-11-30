@@ -158,7 +158,6 @@ class Playground extends React.Component {
             title="React Aztec Playground"
             iconClassNameRight="muidocs-icon-navigation-expand-more"
             iconElementLeft={<IconButton>{}</IconButton>}
-            iconElementRight={<FlatButton label="Preview" onTouchTap={this.toggleView} />}
           />
           <div className="aztec-container">
             <Aztec data={this.state.data} library={MUI} />
@@ -189,9 +188,6 @@ class Playground extends React.Component {
           width: '100%',
           display: 'table'
         }}>
-          <div className={`${this.state.preview ? 'show':'hide'}`}>
-            {this.renderPreviewMode()}
-          </div>
           <div className={`${this.state.preview ? 'hide':'show'}`}>
             {this.renderSplitPane()}
           </div>
