@@ -2,9 +2,9 @@ Inspired from [react-aztec](http://ajainvivek.github.io/react-aztec)
 
 Build dynamic forms using Material UI
 
-> Check demo & detail docs [Documentation](http://playground.geoviewer.io/#/simpleform)
+> Check demo & detail docs [Documentation](https://dinakarans.github.io/nobel-react-aztec/#/simpleform)
 
-> Build dynamic forms using interactive editor [Playground](http://playground.geoviewer.io/#/playground)
+> Build dynamic forms using interactive editor [Playground](https://dinakarans.github.io/nobel-react-aztec/#/playground)
 
 ## Installation
 
