@@ -1,4 +1,4 @@
-Inspired from [react-aztec](http://ajainvivek.github.io/react-aztec)
+Inspired from [react-aztec](https://github.com/ajainvivek/react-aztec)
 
 Build dynamic forms using Material UI
 
