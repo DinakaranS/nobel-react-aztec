@@ -10,7 +10,6 @@ class SelectField extends React.Component {
     this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || '',
-      values: [],
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -65,7 +64,7 @@ class SelectField extends React.Component {
         key={d.primaryText}
         insetChildren
         checked={values && values.indexOf(d.value) > -1}
-        value={value}
+        value={d.value}
         primaryText={d.primaryText}
       />
     ));
@@ -75,11 +74,11 @@ class SelectField extends React.Component {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
     const OPTION = this.props.library[props.option];
-    const { values } = this.state;
+    const { value } = this.state;
     return (
       <div style={{ display: 'flex' }}>
         <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange}>
-          {props.attributes.multiple ? this.menuItemsDetails(values) : this.props.control.options.map((option, index) => {
+          {props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map((option, index) => {
             return (
               <OPTION {...option} key={index}>
                 {}

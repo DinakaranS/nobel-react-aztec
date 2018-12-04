@@ -16,14 +16,15 @@ const LIBMap = {
 const response = {};
 
 const getFieldValue = (...args) => {
-  const type = args[0].type;
+  const a = args[0];
+  const type = a.type;
   let value = null;
   switch (type) {
     case 'textfield':
       value = args[2];
       break;
     case 'selectfield':
-      value = args[3];
+      if (a && a.props&& a.props.multiple) { value = args[3].join().replace(/(^,)|(,$)/g, ''); } else { value = args[3]; }
       break;
     case 'toggle':
       value = args[2];

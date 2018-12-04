@@ -43,8 +43,7 @@ var SelectField = function (_React$Component) {
 
     _this.state = {
       value: props.attributes.selected,
-      errorText: props.attributes.errorText || '',
-      values: []
+      errorText: props.attributes.errorText || ''
     };
     _this.onChange = _this.onChange.bind(_this);
     return _this;
@@ -132,7 +131,7 @@ var SelectField = function (_React$Component) {
           key: d.primaryText,
           insetChildren: true,
           checked: values && values.indexOf(d.value) > -1,
-          value: value,
+          value: d.value,
           primaryText: d.primaryText
         });
       });
@@ -143,7 +142,7 @@ var SelectField = function (_React$Component) {
       var props = this.props;
       var SELECTFIELD = this.props.library[props.component];
       var OPTION = this.props.library[props.option];
-      var values = this.state.values;
+      var value = this.state.value;
 
       return _react2.default.createElement(
         'div',
@@ -151,7 +150,7 @@ var SelectField = function (_React$Component) {
         _react2.default.createElement(
           SELECTFIELD,
           _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange }),
-          props.attributes.multiple ? this.menuItemsDetails(values) : this.props.control.options.map(function (option, index) {
+          props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map(function (option, index) {
             return _react2.default.createElement(OPTION, _extends({}, option, { key: index }));
           })
         ),

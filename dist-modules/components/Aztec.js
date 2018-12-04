@@ -42,14 +42,19 @@ var getFieldValue = function getFieldValue() {
     args[_key] = arguments[_key];
   }
 
-  var type = args[0].type;
+  var a = args[0];
+  var type = a.type;
   var value = null;
   switch (type) {
     case 'textfield':
       value = args[2];
       break;
     case 'selectfield':
-      value = args[3];
+      if (a && a.props && a.props.multiple) {
+        value = args[3].join().replace(/(^,)|(,$)/g, '');
+      } else {
+        value = args[3];
+      }
       break;
     case 'toggle':
       value = args[2];

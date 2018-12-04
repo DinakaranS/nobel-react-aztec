@@ -20,6 +20,9 @@ var validation = {
   mandatory: function mandatory(value) {
     return !_validator2.default.isEmpty(value);
   },
+  mandatoryselect: function mandatoryselect(value) {
+    return value.length > 0;
+  },
   mobile: function mobile(value, locale) {
     return _validator2.default.isMobilePhone(value, locale);
   },

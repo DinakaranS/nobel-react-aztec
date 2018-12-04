@@ -11,6 +11,9 @@ const validation = {
   mandatory(value) {
     return !validator.isEmpty(value);
   },
+  mandatoryselect(value) {
+    return value.length > 0;
+  },
   mobile(value, locale) {
     return validator.isMobilePhone(value, locale);
   },
