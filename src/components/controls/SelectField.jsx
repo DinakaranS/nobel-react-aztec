@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import validation from './../../helpers/validation';
 import TooltipComponent from '../TooltipComponent';
+import MenuItem from 'material-ui/MenuItem';
 
 /** SelectField Component */
 class SelectField extends React.Component {
@@ -8,7 +9,8 @@ class SelectField extends React.Component {
     super(props);
     this.state = {
       value: props.attributes.selected,
-      errorText: props.attributes.errorText || ''
+      errorText: props.attributes.errorText || '',
+      values: [],
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -57,14 +59,27 @@ class SelectField extends React.Component {
     }
   }
 
+  menuItemsDetails(values) {
+    return this.props.control.options.map((d, value) => (
+      <MenuItem
+        key={d.primaryText}
+        insetChildren
+        checked={values && values.indexOf(d.value) > -1}
+        value={value}
+        primaryText={d.primaryText}
+      />
+    ));
+  }
+
   render() {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
     const OPTION = this.props.library[props.option];
+    const { values } = this.state;
     return (
-      <div style={{ display: 'flex' }} >
+      <div style={{ display: 'flex' }}>
         <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange}>
-          {this.props.control.options.map((option, index) => {
+          {props.attributes.multiple ? this.menuItemsDetails(values) : this.props.control.options.map((option, index) => {
             return (
               <OPTION {...option} key={index}>
                 {}

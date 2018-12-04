@@ -20,6 +20,10 @@ var _TooltipComponent = require('../TooltipComponent');
 
 var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
 
+var _MenuItem = require('material-ui/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,7 +43,8 @@ var SelectField = function (_React$Component) {
 
     _this.state = {
       value: props.attributes.selected,
-      errorText: props.attributes.errorText || ''
+      errorText: props.attributes.errorText || '',
+      values: []
     };
     _this.onChange = _this.onChange.bind(_this);
     return _this;
@@ -120,18 +125,33 @@ var SelectField = function (_React$Component) {
       }
     }
   }, {
+    key: 'menuItemsDetails',
+    value: function menuItemsDetails(values) {
+      return this.props.control.options.map(function (d, value) {
+        return _react2.default.createElement(_MenuItem2.default, {
+          key: d.primaryText,
+          insetChildren: true,
+          checked: values && values.indexOf(d.value) > -1,
+          value: value,
+          primaryText: d.primaryText
+        });
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var props = this.props;
       var SELECTFIELD = this.props.library[props.component];
       var OPTION = this.props.library[props.option];
+      var values = this.state.values;
+
       return _react2.default.createElement(
         'div',
         { style: { display: 'flex' } },
         _react2.default.createElement(
           SELECTFIELD,
           _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange }),
-          this.props.control.options.map(function (option, index) {
+          props.attributes.multiple ? this.menuItemsDetails(values) : this.props.control.options.map(function (option, index) {
             return _react2.default.createElement(OPTION, _extends({}, option, { key: index }));
           })
         ),
