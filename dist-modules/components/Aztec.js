@@ -38,41 +38,33 @@ var LIBMap = {
 var response = {};
 
 var getFieldValue = function getFieldValue() {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  var a = args[0];
+  var a = arguments.length <= 0 ? undefined : arguments[0];
   var type = a.type;
   var value = null;
   switch (type) {
     case 'textfield':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     case 'selectfield':
-      if (a && a.props && a.props.multiple) {
-        value = args[3].join().replace(/(^,)|(,$)/g, '');
-      } else {
-        value = args[3];
-      }
+      value = arguments.length <= 3 ? undefined : arguments[3];
       break;
     case 'toggle':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     case 'autocomplete':
-      value = args[1];
+      value = arguments.length <= 1 ? undefined : arguments[1];
       break;
     case 'datepicker':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     case 'timepicker':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     case 'radio':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     case 'checkbox':
-      value = args[2];
+      value = arguments.length <= 2 ? undefined : arguments[2];
       break;
     default:
       value = '';
@@ -106,8 +98,8 @@ var getInitialValues = function getInitialValues(fields) {
 };
 
 var handleData = function handleData(guid) {
-  for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
+  for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
   }
 
   var val = getFieldValue.apply(undefined, args);
@@ -214,8 +206,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
               rules: field.rules,
               formatter: field.formatter,
               onChange: function onChange() {
-                for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-                  args[_key3] = arguments[_key3];
+                for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                  args[_key2] = arguments[_key2];
                 }
 
                 handleData.apply(undefined, [props.guid].concat(args));
@@ -226,8 +218,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
               onBlur: props.onBlur,
               onFocus: props.onFocus,
               onCheck: function onCheck() {
-                for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-                  args[_key4] = arguments[_key4];
+                for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+                  args[_key3] = arguments[_key3];
                 }
 
                 handleData.apply(undefined, [props.guid].concat(args));
@@ -236,8 +228,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
                 }
               },
               onToggle: function onToggle() {
-                for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-                  args[_key5] = arguments[_key5];
+                for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+                  args[_key4] = arguments[_key4];
                 }
 
                 handleData.apply(undefined, [props.guid].concat(args));
@@ -249,8 +241,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
               onDismiss: props.onDismiss,
               onTouchTap: props.onTouchTap,
               onUpdateInput: function onUpdateInput() {
-                for (var _len6 = arguments.length, args = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
-                  args[_key6] = arguments[_key6];
+                for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+                  args[_key5] = arguments[_key5];
                 }
 
                 handleData.apply(undefined, [props.guid].concat(args));
@@ -280,8 +272,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
           formatter: field.formatter,
           fetchResponse: props.fetchResponse,
           onChange: function onChange() {
-            for (var _len7 = arguments.length, args = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
-              args[_key7] = arguments[_key7];
+            for (var _len6 = arguments.length, args = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+              args[_key6] = arguments[_key6];
             }
 
             handleData.apply(undefined, [props.guid].concat(args));
@@ -292,8 +284,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
           onBlur: props.onBlur,
           onFocus: props.onFocus,
           onCheck: function onCheck() {
-            for (var _len8 = arguments.length, args = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
-              args[_key8] = arguments[_key8];
+            for (var _len7 = arguments.length, args = Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+              args[_key7] = arguments[_key7];
             }
 
             handleData.apply(undefined, [props.guid].concat(args));
@@ -302,8 +294,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
             }
           },
           onToggle: function onToggle() {
-            for (var _len9 = arguments.length, args = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
-              args[_key9] = arguments[_key9];
+            for (var _len8 = arguments.length, args = Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+              args[_key8] = arguments[_key8];
             }
 
             handleData.apply(undefined, [props.guid].concat(args));
@@ -315,8 +307,8 @@ var Aztec = exports.Aztec = function Aztec(props) {
           onDismiss: props.onDismiss,
           onTouchTap: props.onTouchTap,
           onUpdateInput: function onUpdateInput() {
-            for (var _len10 = arguments.length, args = Array(_len10), _key10 = 0; _key10 < _len10; _key10++) {
-              args[_key10] = arguments[_key10];
+            for (var _len9 = arguments.length, args = Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
+              args[_key9] = arguments[_key9];
             }
 
             handleData.apply(undefined, [props.guid].concat(args));

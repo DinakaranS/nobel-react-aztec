@@ -24,7 +24,7 @@ const getFieldValue = (...args) => {
       value = args[2];
       break;
     case 'selectfield':
-      if (a && a.props&& a.props.multiple) { value = args[3].join().replace(/(^,)|(,$)/g, ''); } else { value = args[3]; }
+      value = args[3];
       break;
     case 'toggle':
       value = args[2];
