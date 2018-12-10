@@ -12,6 +12,7 @@ class SelectField extends React.Component {
       errorText: props.attributes.errorText || '',
     };
     this.onChange = this.onChange.bind(this);
+    this.selectionRenderer = this.selectionRenderer.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -70,6 +71,25 @@ class SelectField extends React.Component {
     ));
   }
 
+  selectionRenderer(values) {
+    if (!this.props.attributes.multiple) { return this.getProperData(values); }
+    switch (values.length) {
+      case 0:
+        return '';
+      case 1:
+        return this.getProperData(values[0]);
+      default:
+        return this.props.control.props.floatingLabelText ? `${values.length} ${this.props.control.props.floatingLabelText.toLowerCase()} selected` :`${values.length} items selected`;
+    }
+  }
+
+  getProperData(value){
+    const b = this.props.control.options.find(function (a) {
+      return value && a.value && a.value === value;
+    });
+    return (b && b.primaryText) || '';
+  }
+
   render() {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
@@ -77,7 +97,7 @@ class SelectField extends React.Component {
     const { value } = this.state;
     return (
       <div style={{ display: 'flex' }}>
-        <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange}>
+        <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} selectionRenderer={this.selectionRenderer}>
           {props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map((option, index) => {
             return (
               <OPTION {...option} key={index}>

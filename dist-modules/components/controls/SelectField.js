@@ -46,6 +46,7 @@ var SelectField = function (_React$Component) {
       errorText: props.attributes.errorText || ''
     };
     _this.onChange = _this.onChange.bind(_this);
+    _this.selectionRenderer = _this.selectionRenderer.bind(_this);
     return _this;
   }
 
@@ -137,6 +138,29 @@ var SelectField = function (_React$Component) {
       });
     }
   }, {
+    key: 'selectionRenderer',
+    value: function selectionRenderer(values) {
+      if (!this.props.attributes.multiple) {
+        return this.getProperData(values);
+      }
+      switch (values.length) {
+        case 0:
+          return '';
+        case 1:
+          return this.getProperData(values[0]);
+        default:
+          return this.props.control.props.floatingLabelText ? values.length + ' ' + this.props.control.props.floatingLabelText.toLowerCase() + ' selected' : values.length + ' items selected';
+      }
+    }
+  }, {
+    key: 'getProperData',
+    value: function getProperData(value) {
+      var b = this.props.control.options.find(function (a) {
+        return value && a.value && a.value === value;
+      });
+      return b && b.primaryText || '';
+    }
+  }, {
     key: 'render',
     value: function render() {
       var props = this.props;
@@ -149,7 +173,7 @@ var SelectField = function (_React$Component) {
         { style: { display: 'flex' } },
         _react2.default.createElement(
           SELECTFIELD,
-          _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange }),
+          _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange, selectionRenderer: this.selectionRenderer }),
           props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map(function (option, index) {
             return _react2.default.createElement(OPTION, _extends({}, option, { key: index }));
           })
