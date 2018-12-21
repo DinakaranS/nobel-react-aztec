@@ -8,9 +8,7 @@ const mui = [
       "id": "NameTitle",
       "floatingLabelText": "Title",
       "fullWidth": true,
-      "style": {
-        "display": "table"
-      },
+      "isMulti": true,
       "tooltip": {
         "imagestyle":{ width: "20px", height: "20px", top: "15px"},
         "contentstyle":{ width: '150px', height: "25px", },
@@ -48,19 +46,7 @@ const mui = [
       ]
     },
     "layout": {
-      "row": 1,
-      "xs": {
-        "col": 12
-      },
-      "sm": {
-        "col": 12
-      },
-      "md": {
-        "col": 3
-      },
-      "lg": {
-        "col": 3
-      }
+      "row": 1
     }
   },
   {

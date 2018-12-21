@@ -24,6 +24,14 @@ var _MenuItem = require('material-ui/MenuItem');
 
 var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
+var _reactSelect = require('react-select');
+
+var _reactSelect2 = _interopRequireDefault(_reactSelect);
+
+var _map = require('lodash/map');
+
+var _map2 = _interopRequireDefault(_map);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43,10 +51,12 @@ var SelectField = function (_React$Component) {
 
     _this.state = {
       value: props.attributes.selected,
-      errorText: props.attributes.errorText || ''
+      errorText: props.attributes.errorText || '',
+      selectedOption: props.attributes.selected
     };
     _this.onChange = _this.onChange.bind(_this);
     _this.selectionRenderer = _this.selectionRenderer.bind(_this);
+    _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
@@ -55,7 +65,8 @@ var SelectField = function (_React$Component) {
     value: function componentWillReceiveProps(props) {
       this.state = {
         value: props.attributes.selected,
-        errorText: props.attributes.errorText || ''
+        errorText: props.attributes.errorText || '',
+        selectedOption: props.attributes.selected
       };
     }
   }, {
@@ -161,17 +172,34 @@ var SelectField = function (_React$Component) {
       return b && b.primaryText || '';
     }
   }, {
+    key: 'handleChange',
+    value: function handleChange(selectedOption) {
+      this.setState({ selectedOption: selectedOption });
+      // console.log('Option selected:', selectedOption);
+      if (typeof this.props.onChange === 'function') {
+        this.props.onChange(this.props.control, '', '', (0, _map2.default)(selectedOption, 'label'));
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var props = this.props;
       var SELECTFIELD = this.props.library[props.component];
       var OPTION = this.props.library[props.option];
-      var value = this.state.value;
+      var _state = this.state,
+          selectedOption = _state.selectedOption,
+          value = _state.value;
 
       return _react2.default.createElement(
         'div',
         { style: { display: 'flex' } },
-        _react2.default.createElement(
+        props.attributes.isMulti ? _react2.default.createElement(
+          'div',
+          { style: Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', zIndex: 2, maxWidth: '100%' }, props.attributes.style) },
+          _react2.default.createElement(_reactSelect2.default, _extends({ value: selectedOption, onChange: this.handleChange, isMulti: true }, props.attributes, { options: props.control.options.map(function (option) {
+              return { value: option.value, label: option.primaryText || option.label || '' };
+            }) }))
+        ) : _react2.default.createElement(
           SELECTFIELD,
           _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange, selectionRenderer: this.selectionRenderer }),
           props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map(function (option, index) {

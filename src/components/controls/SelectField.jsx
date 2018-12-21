@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import validation from './../../helpers/validation';
 import TooltipComponent from '../TooltipComponent';
 import MenuItem from 'material-ui/MenuItem';
+import MultiSelectField from 'react-select';
+import map from 'lodash/map';
 
 /** SelectField Component */
 class SelectField extends React.Component {
@@ -10,15 +12,18 @@ class SelectField extends React.Component {
     this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || '',
+      selectedOption: props.attributes.selected,
     };
     this.onChange = this.onChange.bind(this);
     this.selectionRenderer = this.selectionRenderer.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps(props) {
     this.state = {
       value: props.attributes.selected,
-      errorText: props.attributes.errorText || ''
+      errorText: props.attributes.errorText || '',
+      selectedOption: props.attributes.selected,
     };
   }
 
@@ -90,22 +95,34 @@ class SelectField extends React.Component {
     return (b && b.primaryText) || '';
   }
 
+  handleChange(selectedOption) {
+    this.setState({ selectedOption });
+    // console.log('Option selected:', selectedOption);
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(this.props.control, '', '', map(selectedOption, 'label'));
+    }
+  }
+
   render() {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
     const OPTION = this.props.library[props.option];
-    const { value } = this.state;
+    const { selectedOption, value } = this.state;
     return (
       <div style={{ display: 'flex' }}>
-        <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} selectionRenderer={this.selectionRenderer}>
-          {props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map((option, index) => {
-            return (
-              <OPTION {...option} key={index}>
-                {}
-              </OPTION>
-            );
-          })}
-        </SELECTFIELD>
+        {props.attributes.isMulti ?
+          <div style={Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', zIndex: 2, maxWidth: '100%' }, props.attributes.style)}>
+            <MultiSelectField value={selectedOption} onChange={this.handleChange} isMulti {...props.attributes} options={props.control.options.map((option) => { return { value: option.value, label: option.primaryText || option.label || '' } })} />
+          </div>:
+          <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} selectionRenderer={this.selectionRenderer}>
+            {props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map((option, index) => {
+              return (
+                <OPTION {...option} key={index}>
+                  {}
+                </OPTION>
+              );
+            })}
+          </SELECTFIELD>}
         {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
       </div>
     );
