@@ -32,6 +32,10 @@ var _map = require('lodash/map');
 
 var _map2 = _interopRequireDefault(_map);
 
+var _find = require('lodash/find');
+
+var _find2 = _interopRequireDefault(_find);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52,7 +56,7 @@ var SelectField = function (_React$Component) {
     _this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || '',
-      selectedOption: props.attributes.selected
+      selectedOption: _this.getProperValueForReactSelect()
     };
     _this.onChange = _this.onChange.bind(_this);
     _this.selectionRenderer = _this.selectionRenderer.bind(_this);
@@ -66,7 +70,7 @@ var SelectField = function (_React$Component) {
       this.state = {
         value: props.attributes.selected,
         errorText: props.attributes.errorText || '',
-        selectedOption: props.attributes.selected
+        selectedOption: this.getProperValueForReactSelect()
       };
     }
   }, {
@@ -179,6 +183,18 @@ var SelectField = function (_React$Component) {
       if (typeof this.props.onChange === 'function') {
         this.props.onChange(this.props.control, '', '', (0, _map2.default)(selectedOption, 'label'));
       }
+    }
+  }, {
+    key: 'getProperValueForReactSelect',
+    value: function getProperValueForReactSelect() {
+      var selectedOption = [];
+      var options = this.props.control.options;
+      var o = this.props.attributes.selected || this.props.attributes.value;
+      (0, _map2.default)(o, function (value) {
+        var f = (0, _find2.default)(options, { value: value });
+        f && selectedOption.push({ value: f.value, label: f.primaryText || f.label || '' });
+      });
+      return selectedOption;
     }
   }, {
     key: 'render',

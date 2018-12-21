@@ -9,6 +9,7 @@ const mui = [
       "floatingLabelText": "Title",
       "fullWidth": true,
       "isMulti": true,
+      "selected":["Mr", "Mrs"],
       "tooltip": {
         "imagestyle":{ width: "20px", height: "20px", top: "15px"},
         "contentstyle":{ width: '150px', height: "25px", },

@@ -4,6 +4,7 @@ import TooltipComponent from '../TooltipComponent';
 import MenuItem from 'material-ui/MenuItem';
 import MultiSelectField from 'react-select';
 import map from 'lodash/map';
+import find from 'lodash/find';
 
 /** SelectField Component */
 class SelectField extends React.Component {
@@ -12,7 +13,7 @@ class SelectField extends React.Component {
     this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || '',
-      selectedOption: props.attributes.selected,
+      selectedOption: this.getProperValueForReactSelect(),
     };
     this.onChange = this.onChange.bind(this);
     this.selectionRenderer = this.selectionRenderer.bind(this);
@@ -23,7 +24,7 @@ class SelectField extends React.Component {
     this.state = {
       value: props.attributes.selected,
       errorText: props.attributes.errorText || '',
-      selectedOption: props.attributes.selected,
+      selectedOption: this.getProperValueForReactSelect(),
     };
   }
 
@@ -101,6 +102,17 @@ class SelectField extends React.Component {
     if (typeof this.props.onChange === 'function') {
       this.props.onChange(this.props.control, '', '', map(selectedOption, 'label'));
     }
+  }
+
+  getProperValueForReactSelect(){
+    const selectedOption = [];
+    const options = this.props.control.options;
+    const o = this.props.attributes.selected || this.props.attributes.value;
+    map(o, function (value) {
+      const f = find(options, { value });
+      f && selectedOption.push({ value: f.value, label: f.primaryText || f.label || '' });
+    });
+    return selectedOption
   }
 
   render() {
