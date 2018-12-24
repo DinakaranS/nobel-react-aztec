@@ -36,6 +36,8 @@ var _find = require('lodash/find');
 
 var _find2 = _interopRequireDefault(_find);
 
+var _multiSelectCustomControl = require('../multiSelectCustomControl');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -212,7 +214,7 @@ var SelectField = function (_React$Component) {
         props.attributes.isMulti ? _react2.default.createElement(
           'div',
           { style: Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', zIndex: 2, maxWidth: '100%' }, props.attributes.style) },
-          _react2.default.createElement(_reactSelect2.default, _extends({ value: selectedOption, onChange: this.handleChange, isMulti: true }, props.attributes, { options: props.control.options.map(function (option) {
+          _react2.default.createElement(_reactSelect2.default, _extends({ components: props.attributes.enablefloatingLabel ? { Control: _multiSelectCustomControl.ControlComponent } : null, value: selectedOption, onChange: this.handleChange, isMulti: true }, props.attributes, { options: props.control.options.map(function (option) {
               return { value: option.value, label: option.primaryText || option.label || '' };
             }) }))
         ) : _react2.default.createElement(
