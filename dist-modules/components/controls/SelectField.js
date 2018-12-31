@@ -36,7 +36,7 @@ var _find = require('lodash/find');
 
 var _find2 = _interopRequireDefault(_find);
 
-var _multiSelectCustomControl = require('../multiSelectCustomControl');
+var _multiSelectCustomControl = require('../multiselect/multiSelectCustomControl');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -213,10 +213,10 @@ var SelectField = function (_React$Component) {
         { style: { display: 'flex' } },
         props.attributes.isMulti ? _react2.default.createElement(
           'div',
-          { style: Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', zIndex: 2, maxWidth: '100%' }, props.attributes.style) },
+          { style: Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', maxWidth: '100%' }, props.attributes.style) },
           _react2.default.createElement(_reactSelect2.default, _extends({ menuPlacement: props.attributes.menuPlacement || 'auto', captureMenuScroll: props.attributes.captureMenuScroll || false, menuShouldScrollIntoView: props.attributes.menuShouldScrollIntoView || false, components: props.attributes.enablefloatingLabel ? { Control: _multiSelectCustomControl.ControlComponent } : null, value: selectedOption, onChange: this.handleChange, isMulti: true }, props.attributes, { options: props.control.options.map(function (option) {
               return { value: option.value, label: option.primaryText || option.label || '' };
-            }) }))
+            }), styles: SelectField.styles }))
         ) : _react2.default.createElement(
           SELECTFIELD,
           _extends({}, props.attributes, { value: this.state.value, errorText: this.state.errorText, onChange: this.onChange, selectionRenderer: this.selectionRenderer }),
@@ -226,6 +226,15 @@ var SelectField = function (_React$Component) {
         ),
         this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
       );
+    }
+  }], [{
+    key: 'styles',
+    get: function get() {
+      return {
+        menu: function menu(base) {
+          return Object.assign({}, base, { zIndex: '20000 !important' });
+        }
+      };
     }
   }]);
 

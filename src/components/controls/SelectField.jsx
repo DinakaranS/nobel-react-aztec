@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import MultiSelectField from 'react-select';
 import map from 'lodash/map';
 import find from 'lodash/find';
-import { ControlComponent } from '../multiSelectCustomControl';
+import { ControlComponent } from '../multiselect/multiSelectCustomControl';
 
 /** SelectField Component */
 class SelectField extends React.Component {
@@ -116,6 +116,10 @@ class SelectField extends React.Component {
     return selectedOption
   }
 
+  static get styles() {
+    return { menu(base) { return Object.assign({}, base, { zIndex: '20000 !important' }) } }
+  }
+
   render() {
     const props = this.props;
     const SELECTFIELD = this.props.library[props.component];
@@ -124,8 +128,8 @@ class SelectField extends React.Component {
     return (
       <div style={{ display: 'flex' }}>
         {props.attributes.isMulti ?
-          <div style={Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', zIndex: 2, maxWidth: '100%' }, props.attributes.style)}>
-            <MultiSelectField menuPlacement={props.attributes.menuPlacement || 'auto'} captureMenuScroll={props.attributes.captureMenuScroll||false} menuShouldScrollIntoView={props.attributes.menuShouldScrollIntoView || false} components={props.attributes.enablefloatingLabel ? { Control: ControlComponent } : null} value={selectedOption} onChange={this.handleChange} isMulti {...props.attributes} options={props.control.options.map((option) => { return { value: option.value, label: option.primaryText || option.label || '' } })} />
+          <div style={Object.assign({}, { width: '120%', marginTop: '25px', marginRight: '5px', maxWidth: '100%' }, props.attributes.style)}>
+            <MultiSelectField menuPlacement={props.attributes.menuPlacement || 'auto'} captureMenuScroll={props.attributes.captureMenuScroll||false} menuShouldScrollIntoView={props.attributes.menuShouldScrollIntoView || false} components={props.attributes.enablefloatingLabel ? { Control: ControlComponent } : null} value={selectedOption} onChange={this.handleChange} isMulti {...props.attributes} options={props.control.options.map((option) => { return { value: option.value, label: option.primaryText || option.label || '' } })} styles={SelectField.styles} />
           </div>:
           <SELECTFIELD {...props.attributes} value={this.state.value} errorText={this.state.errorText} onChange={this.onChange} selectionRenderer={this.selectionRenderer}>
             {props.attributes.multiple ? this.menuItemsDetails(value) : this.props.control.options.map((option, index) => {
