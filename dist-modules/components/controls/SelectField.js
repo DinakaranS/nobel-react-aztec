@@ -183,7 +183,7 @@ var SelectField = function (_React$Component) {
       this.setState({ selectedOption: selectedOption });
       // console.log('Option selected:', selectedOption);
       if (typeof this.props.onChange === 'function') {
-        this.props.onChange(this.props.control, '', '', (0, _map2.default)(selectedOption, 'label'));
+        this.props.onChange(this.props.control, '', '', (0, _map2.default)(selectedOption, 'value'));
       }
     }
   }, {

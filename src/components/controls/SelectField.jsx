@@ -101,7 +101,7 @@ class SelectField extends React.Component {
     this.setState({ selectedOption });
     // console.log('Option selected:', selectedOption);
     if (typeof this.props.onChange === 'function') {
-      this.props.onChange(this.props.control, '', '', map(selectedOption, 'label'));
+      this.props.onChange(this.props.control, '', '', map(selectedOption, 'value'));
     }
   }
 
