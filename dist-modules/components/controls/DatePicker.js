@@ -186,13 +186,12 @@ var DatePicker = function (_React$Component) {
       var DATEPICKER = props.library[props.component];
       var wrapperStyle = Object.assign({}, {
         position: 'relative',
-        display: props.attributes.clear ? 'inline-block' : ''
+        display: props.attributes.clear ? 'contents' : ''
       }, props.attributes.wrapperStyle);
       var closeStyle = Object.assign({}, {
-        position: 'absolute',
-        right: 0,
-        top: '12px',
+        position: 'relative',
         cursor: 'pointer',
+        top: props.attributes.closeStyle && props.attributes.closeStyle.top ? props.attributes.closeStyle.top : props.control && props.control.props.floatingLabelText ? '34px' : '12px',
         display: props.attributes.clear ? 'block' : 'none'
       }, props.attributes.closeStyle);
       return _react2.default.createElement(
@@ -201,10 +200,14 @@ var DatePicker = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { style: wrapperStyle },
-          _react2.default.createElement(DATEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap, formatDate: this.formatDate })),
-          _react2.default.createElement(_clear2.default, { color: _colors.grey500, style: closeStyle, onClick: this.clear })
+          _react2.default.createElement(DATEPICKER, _extends({}, this.state.attributes, { errorText: this.state.errorText, onChange: this.onChange, onFocus: this.onFocus, onShow: this.onShow, onDismiss: this.onDismiss, onTouchTap: this.onTouchTap, formatDate: this.formatDate }))
         ),
-        this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
+        _react2.default.createElement(
+          'div',
+          { style: { display: 'inline-flex' } },
+          _react2.default.createElement(_clear2.default, { color: _colors.grey700, style: closeStyle, onClick: this.clear }),
+          this.props.attributes.tooltip && _react2.default.createElement(_TooltipComponent2.default, { tooltip: this.props.attributes.tooltip })
+        )
       );
     }
   }]);

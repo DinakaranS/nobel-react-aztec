@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import ActionClear from 'material-ui/svg-icons/content/clear';
-import { grey500 } from 'material-ui/styles/colors';
+import { grey700 } from 'material-ui/styles/colors';
 // import validation from './../../helpers/validation';
 import TooltipComponent from '../TooltipComponent';
 
@@ -102,22 +102,23 @@ class DatePicker extends React.Component {
     const DATEPICKER = props.library[props.component];
     const wrapperStyle = Object.assign({}, {
       position: 'relative',
-      display: props.attributes.clear ? 'inline-block' : ''
+      display: props.attributes.clear ? 'contents' : ''
     }, props.attributes.wrapperStyle);
     const closeStyle = Object.assign({}, {
-      position: 'absolute',
-      right: 0,
-      top: '12px',
+      position: 'relative',
       cursor: 'pointer',
+      top: ((props.attributes.closeStyle && props.attributes.closeStyle.top) ? props.attributes.closeStyle.top : (props.control && props.control.props.floatingLabelText) ? '34px' : '12px'),
       display: props.attributes.clear ? 'block' : 'none'
     }, props.attributes.closeStyle);
     return (
       <div style={{ display: 'flex' }}>
         <div style={wrapperStyle}>
           <DATEPICKER {...this.state.attributes} errorText={this.state.errorText} onChange={this.onChange} onFocus={this.onFocus} onShow={this.onShow} onDismiss={this.onDismiss} onTouchTap={this.onTouchTap} formatDate={this.formatDate} />
-          <ActionClear color={grey500} style={closeStyle} onClick={this.clear} />
         </div>
-        {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+        <div style={{ display: 'inline-flex' }}>
+          <ActionClear color={grey700} style={closeStyle} onClick={this.clear} />
+          {this.props.attributes.tooltip && <TooltipComponent tooltip={this.props.attributes.tooltip} />}
+        </div>
       </div>);
   }
 }
