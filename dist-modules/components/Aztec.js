@@ -169,6 +169,7 @@ var handleSubmit = function handleSubmit(callback, data, guid) {
 
 /** Aztec */
 var Aztec = exports.Aztec = function Aztec(props) {
+  window.scrollTo(0, 0);
   var config = LIBMap.MUI;
   var data = props.data;
   if (!props.forceUpdate) {

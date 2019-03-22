@@ -102,7 +102,7 @@ class DatePicker extends React.Component {
     const DATEPICKER = props.library[props.component];
     const wrapperStyle = Object.assign({}, {
       position: 'relative',
-      display: props.attributes.clear ? 'contents' : ''
+      display: (props.attributes.wrapperStyle && props.attributes.wrapperStyle.display ? props.attributes.wrapperStyle.display : 'contents')
     }, props.attributes.wrapperStyle);
     const closeStyle = Object.assign({}, {
       position: 'relative',

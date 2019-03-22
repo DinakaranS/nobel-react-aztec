@@ -142,6 +142,7 @@ const handleSubmit = (callback, data, guid) => {
 
 /** Aztec */
 export const Aztec = (props) => {
+  window.scrollTo(0, 0);
   const config = LIBMap.MUI;
   let data = props.data;
   if (!props.forceUpdate) {

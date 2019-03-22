@@ -186,7 +186,7 @@ var DatePicker = function (_React$Component) {
       var DATEPICKER = props.library[props.component];
       var wrapperStyle = Object.assign({}, {
         position: 'relative',
-        display: props.attributes.clear ? 'contents' : ''
+        display: props.attributes.wrapperStyle && props.attributes.wrapperStyle.display ? props.attributes.wrapperStyle.display : 'contents'
       }, props.attributes.wrapperStyle);
       var closeStyle = Object.assign({}, {
         position: 'relative',
