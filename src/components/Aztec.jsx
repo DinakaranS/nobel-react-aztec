@@ -295,6 +295,20 @@ export const Aztec = (props) => {
   );
 };
 
+export const ClearAztecByGuid = (guid = '') => {
+  if (guid) {
+    delete response[guid]
+  }
+};
+
+export const ClearAllAztec = (except = []) => {
+  _.map(Object.keys(response), function (k) {
+    if (except.indexOf(k) === -1) {
+      delete response[k]
+    }
+  })
+};
+
 Aztec.propTypes = {
   data: PropTypes.array.isRequired,
   library: PropTypes.object,
@@ -317,4 +331,5 @@ Aztec.propTypes = {
   patch: PropTypes.object,
   guid: PropTypes.string.isRequired
 };
-export default Aztec;
+export default { Aztec, ClearAztecByGuid, ClearAllAztec, };
+// export default Aztec;

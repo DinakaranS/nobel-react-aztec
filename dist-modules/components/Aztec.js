@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Aztec = undefined;
+exports.ClearAllAztec = exports.ClearAztecByGuid = exports.Aztec = undefined;
 
 var _react = require('react');
 
@@ -334,6 +334,24 @@ var Aztec = exports.Aztec = function Aztec(props) {
   );
 };
 
+var ClearAztecByGuid = exports.ClearAztecByGuid = function ClearAztecByGuid() {
+  var guid = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+  if (guid) {
+    delete response[guid];
+  }
+};
+
+var ClearAllAztec = exports.ClearAllAztec = function ClearAllAztec() {
+  var except = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+  _lodash2.default.map(Object.keys(response), function (k) {
+    if (except.indexOf(k) === -1) {
+      delete response[k];
+    }
+  });
+};
+
 process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   data: _react.PropTypes.array.isRequired,
   library: _react.PropTypes.object,
@@ -356,4 +374,5 @@ process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   patch: _react.PropTypes.object,
   guid: _react.PropTypes.string.isRequired
 } : void 0;
-exports.default = Aztec;
+exports.default = { Aztec: Aztec, ClearAztecByGuid: ClearAztecByGuid, ClearAllAztec: ClearAllAztec };
+// export default Aztec;

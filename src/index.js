@@ -1,5 +1,5 @@
-import { Aztec } from './components/Aztec';
+import { Aztec, ClearAllAztec, ClearAztecByGuid } from './components/Aztec';
 
 module.exports = {
-  Aztec
+  Aztec, ClearAllAztec, ClearAztecByGuid
 };

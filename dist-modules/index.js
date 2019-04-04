@@ -3,5 +3,5 @@
 var _Aztec = require('./components/Aztec');
 
 module.exports = {
-  Aztec: _Aztec.Aztec
+  Aztec: _Aztec.Aztec, ClearAllAztec: _Aztec.ClearAllAztec, ClearAztecByGuid: _Aztec.ClearAztecByGuid
 };
