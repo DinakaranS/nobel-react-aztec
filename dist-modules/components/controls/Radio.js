@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TooltipComponent = require('../TooltipComponent');
 
 var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
@@ -84,12 +88,12 @@ var Radio = function (_React$Component) {
 }(_react2.default.Component);
 
 process.env.NODE_ENV !== "production" ? Radio.propTypes = {
-  library: _react.PropTypes.object,
-  component: _react.PropTypes.string.isRequired,
-  attributes: _react.PropTypes.object,
-  control: _react.PropTypes.object,
-  option: _react.PropTypes.string.isRequired,
-  rules: _react.PropTypes.object,
-  onChange: _react.PropTypes.func
+  library: _propTypes2.default.object,
+  component: _propTypes2.default.string.isRequired,
+  attributes: _propTypes2.default.object,
+  control: _propTypes2.default.object,
+  option: _propTypes2.default.string.isRequired,
+  rules: _propTypes2.default.object,
+  onChange: _propTypes2.default.func
 } : void 0;
 exports.default = Radio;

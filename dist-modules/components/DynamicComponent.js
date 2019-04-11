@@ -9,6 +9,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _index = require('./controls/index');
 
 var Controls = _interopRequireWildcard(_index);
@@ -23,7 +27,7 @@ var DynamicComponent = exports.DynamicComponent = function DynamicComponent(prop
 };
 
 process.env.NODE_ENV !== "production" ? DynamicComponent.propTypes = {
-  map: _react.PropTypes.string.isRequired
+  map: _propTypes2.default.string.isRequired
 } : void 0;
 
 exports.default = DynamicComponent;

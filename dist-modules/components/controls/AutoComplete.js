@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _validation = require('./../../helpers/validation');
 
 var _validation2 = _interopRequireDefault(_validation);
@@ -195,16 +199,16 @@ var AutoComplete = function (_React$Component) {
 }(_react2.default.Component);
 
 process.env.NODE_ENV !== "production" ? AutoComplete.propTypes = {
-  library: _react.PropTypes.object,
-  component: _react.PropTypes.string.isRequired,
-  attributes: _react.PropTypes.object,
-  control: _react.PropTypes.object,
-  option: _react.PropTypes.string.isRequired,
-  rules: _react.PropTypes.object,
-  onUpdateInput: _react.PropTypes.func,
-  onNewRequest: _react.PropTypes.func,
-  onFocus: _react.PropTypes.func,
-  onBlur: _react.PropTypes.func,
-  filter: _react.PropTypes.func
+  library: _propTypes2.default.object,
+  component: _propTypes2.default.string.isRequired,
+  attributes: _propTypes2.default.object,
+  control: _propTypes2.default.object,
+  option: _propTypes2.default.string.isRequired,
+  rules: _propTypes2.default.object,
+  onUpdateInput: _propTypes2.default.func,
+  onNewRequest: _propTypes2.default.func,
+  onFocus: _propTypes2.default.func,
+  onBlur: _propTypes2.default.func,
+  filter: _propTypes2.default.func
 } : void 0;
 exports.default = AutoComplete;

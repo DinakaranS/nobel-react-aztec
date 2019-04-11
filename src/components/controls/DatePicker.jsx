@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import ActionClear from 'material-ui/svg-icons/content/clear';
 import { grey700 } from 'material-ui/styles/colors';

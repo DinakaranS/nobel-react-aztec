@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -197,18 +201,18 @@ var TimePicker = function (_React$Component) {
 }(_react2.default.Component);
 
 process.env.NODE_ENV !== "production" ? TimePicker.propTypes = {
-  library: _react.PropTypes.object,
-  component: _react.PropTypes.string.isRequired,
-  attributes: _react.PropTypes.object,
-  control: _react.PropTypes.object,
-  option: _react.PropTypes.string.isRequired,
-  rules: _react.PropTypes.object,
-  onChange: _react.PropTypes.func,
-  onFocus: _react.PropTypes.func,
-  onDismiss: _react.PropTypes.func,
-  onShow: _react.PropTypes.func,
-  onTouchTap: _react.PropTypes.func,
-  wrapperStyle: _react.PropTypes.object,
-  closeStyle: _react.PropTypes.object
+  library: _propTypes2.default.object,
+  component: _propTypes2.default.string.isRequired,
+  attributes: _propTypes2.default.object,
+  control: _propTypes2.default.object,
+  option: _propTypes2.default.string.isRequired,
+  rules: _propTypes2.default.object,
+  onChange: _propTypes2.default.func,
+  onFocus: _propTypes2.default.func,
+  onDismiss: _propTypes2.default.func,
+  onShow: _propTypes2.default.func,
+  onTouchTap: _propTypes2.default.func,
+  wrapperStyle: _propTypes2.default.object,
+  closeStyle: _propTypes2.default.object
 } : void 0;
 exports.default = TimePicker;

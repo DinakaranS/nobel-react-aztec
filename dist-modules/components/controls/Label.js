@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TooltipComponent = require('../TooltipComponent');
 
 var _TooltipComponent2 = _interopRequireDefault(_TooltipComponent);
@@ -33,6 +37,6 @@ var Label = function Label(props) {
 };
 
 process.env.NODE_ENV !== "production" ? Label.propTypes = {
-  attributes: _react.PropTypes.object
+  attributes: _propTypes2.default.object
 } : void 0;
 exports.default = Label;

@@ -9,6 +9,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _lodash = require('lodash');
 
 var _lodash2 = _interopRequireDefault(_lodash);
@@ -353,26 +357,26 @@ var ClearAllAztec = exports.ClearAllAztec = function ClearAllAztec() {
 };
 
 process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
-  data: _react.PropTypes.array.isRequired,
-  library: _react.PropTypes.object,
-  onChange: _react.PropTypes.func,
-  onFocus: _react.PropTypes.func,
-  onBlur: _react.PropTypes.func,
-  onTouchTap: _react.PropTypes.func,
-  onCheck: _react.PropTypes.func,
-  onToggle: _react.PropTypes.func,
-  onShow: _react.PropTypes.func,
-  onDismiss: _react.PropTypes.func,
-  onUpdateInput: _react.PropTypes.func,
-  onNewRequest: _react.PropTypes.func,
-  filter: _react.PropTypes.func,
-  response: _react.PropTypes.object,
-  onSubmit: _react.PropTypes.func,
-  formRef: _react.PropTypes.func,
-  forceUpdate: _react.PropTypes.bool,
-  displayErrors: _react.PropTypes.bool,
-  patch: _react.PropTypes.object,
-  guid: _react.PropTypes.string.isRequired
+  data: _propTypes2.default.array.isRequired,
+  library: _propTypes2.default.object,
+  onChange: _propTypes2.default.func,
+  onFocus: _propTypes2.default.func,
+  onBlur: _propTypes2.default.func,
+  onTouchTap: _propTypes2.default.func,
+  onCheck: _propTypes2.default.func,
+  onToggle: _propTypes2.default.func,
+  onShow: _propTypes2.default.func,
+  onDismiss: _propTypes2.default.func,
+  onUpdateInput: _propTypes2.default.func,
+  onNewRequest: _propTypes2.default.func,
+  filter: _propTypes2.default.func,
+  response: _propTypes2.default.object,
+  onSubmit: _propTypes2.default.func,
+  formRef: _propTypes2.default.func,
+  forceUpdate: _propTypes2.default.bool,
+  displayErrors: _propTypes2.default.bool,
+  patch: _propTypes2.default.object,
+  guid: _propTypes2.default.string.isRequired
 } : void 0;
 exports.default = { Aztec: Aztec, ClearAztecByGuid: ClearAztecByGuid, ClearAllAztec: ClearAllAztec };
 // export default Aztec;

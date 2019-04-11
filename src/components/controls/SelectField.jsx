@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import validation from './../../helpers/validation';
 import TooltipComponent from '../TooltipComponent';
 import MenuItem from 'material-ui/MenuItem';
