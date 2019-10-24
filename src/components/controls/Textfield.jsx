@@ -38,6 +38,15 @@ class TextField extends React.Component {
         case 'number':
           formattedValue = numeral(number).format(formatter.expression);
           break;
+        case 'currency': {
+          // Create our number formatter.
+          const formatterCurrency = new Intl.NumberFormat(formatter.locale || 'en-US', formatter.options || {
+            style: 'currency',
+            currency: 'USD',
+          });
+          formattedValue = formatterCurrency.format(number);
+          break;
+        }
         default:
           break;
       }
@@ -85,6 +94,9 @@ class TextField extends React.Component {
     if (formatter) {
       switch (formatter.type) {
         case 'number':
+          value = numeral(val).value();
+          break;
+        case 'currency':
           value = numeral(val).value();
           break;
         default:

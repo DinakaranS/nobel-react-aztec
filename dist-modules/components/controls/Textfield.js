@@ -80,6 +80,16 @@ var TextField = function (_React$Component) {
           case 'number':
             formattedValue = (0, _numeral2.default)(number).format(formatter.expression);
             break;
+          case 'currency':
+            {
+              // Create our number formatter.
+              var formatterCurrency = new Intl.NumberFormat(formatter.locale || 'en-US', formatter.options || {
+                style: 'currency',
+                currency: 'USD'
+              });
+              formattedValue = formatterCurrency.format(number);
+              break;
+            }
           default:
             break;
         }
@@ -154,6 +164,9 @@ var TextField = function (_React$Component) {
       if (formatter) {
         switch (formatter.type) {
           case 'number':
+            value = (0, _numeral2.default)(val).value();
+            break;
+          case 'currency':
             value = (0, _numeral2.default)(val).value();
             break;
           default:
