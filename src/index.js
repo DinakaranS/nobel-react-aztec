@@ -1,5 +1,5 @@
-import { Aztec, ClearAllAztec, ClearAztecByGuid } from './components/Aztec';
+import { Aztec, ClearAllAztec, ClearAztecByGuid, CurrentFormResponseDataByGuid } from './components/Aztec';
 
 module.exports = {
-  Aztec, ClearAllAztec, ClearAztecByGuid
+  Aztec, ClearAllAztec, ClearAztecByGuid, CurrentFormResponseDataByGuid
 };

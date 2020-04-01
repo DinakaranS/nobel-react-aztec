@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ClearAllAztec = exports.ClearAztecByGuid = exports.Aztec = undefined;
+exports.CurrentFormResponseDataByGuid = exports.ClearAllAztec = exports.ClearAztecByGuid = exports.Aztec = undefined;
 
 var _react = require('react');
 
@@ -356,6 +356,13 @@ var ClearAllAztec = exports.ClearAllAztec = function ClearAllAztec() {
   });
 };
 
+var CurrentFormResponseDataByGuid = exports.CurrentFormResponseDataByGuid = function CurrentFormResponseDataByGuid(guid) {
+  if (!response[guid]) {
+    return '';
+  }
+  return response[guid];
+};
+
 process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   data: _propTypes2.default.array.isRequired,
   library: _propTypes2.default.object,
@@ -378,5 +385,5 @@ process.env.NODE_ENV !== "production" ? Aztec.propTypes = {
   patch: _propTypes2.default.object,
   guid: _propTypes2.default.string.isRequired
 } : void 0;
-exports.default = { Aztec: Aztec, ClearAztecByGuid: ClearAztecByGuid, ClearAllAztec: ClearAllAztec };
+exports.default = { Aztec: Aztec, ClearAztecByGuid: ClearAztecByGuid, ClearAllAztec: ClearAllAztec, CurrentFormResponseDataByGuid: CurrentFormResponseDataByGuid };
 // export default Aztec;

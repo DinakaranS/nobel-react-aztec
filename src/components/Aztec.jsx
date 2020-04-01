@@ -310,6 +310,13 @@ export const ClearAllAztec = (except = []) => {
   })
 };
 
+export const CurrentFormResponseDataByGuid = (guid) => {
+  if (!response[guid]) {
+    return '';
+  }
+  return response[guid];
+};
+
 Aztec.propTypes = {
   data: PropTypes.array.isRequired,
   library: PropTypes.object,
@@ -332,5 +339,5 @@ Aztec.propTypes = {
   patch: PropTypes.object,
   guid: PropTypes.string.isRequired
 };
-export default { Aztec, ClearAztecByGuid, ClearAllAztec, };
+export default { Aztec, ClearAztecByGuid, ClearAllAztec, CurrentFormResponseDataByGuid };
 // export default Aztec;
