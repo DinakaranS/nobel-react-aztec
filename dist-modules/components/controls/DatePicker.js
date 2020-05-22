@@ -49,7 +49,7 @@ function transformAttrs(props) {
       minDate = attributes.minDate,
       maxDate = attributes.maxDate;
   var _control$isUTC = control.isUTC,
-      isUTC = _control$isUTC === undefined ? false : _control$isUTC;
+      isUTC = _control$isUTC === undefined ? true : _control$isUTC;
 
   var formatedValue = value ? new Date((0, _moment2.default)(value).format()) : undefined;
   if (isUTC && value) {
@@ -148,11 +148,12 @@ var DatePicker = function (_React$Component) {
       if (typeof this.props.onChange === 'function') {
         var _props2;
 
-        var dateTime = (0, _moment2.default)(new Date()).utc();
-
         var _ref2 = this.props || {},
-            control = _ref2.control;
+            control = _ref2.control,
+            _ref2$isUTC = _ref2.isUTC,
+            isUTC = _ref2$isUTC === undefined ? true : _ref2$isUTC;
 
+        var dateTime = isUTC ? (0, _moment2.default)(new Date()).utc() : (0, _moment2.default)(new Date());
         var _control$format = control.format,
             format = _control$format === undefined ? 'YYYY-MM-DD HH:mm:ss' : _control$format;
 

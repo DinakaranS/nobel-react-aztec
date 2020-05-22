@@ -13,7 +13,7 @@ function transformAttrs(props) {
     minDate,
     maxDate
   } = attributes;
-  const { isUTC = false } = control;
+  const { isUTC = true } = control;
   let formatedValue = value ? new Date(moment(value).format()) : undefined;
   if (isUTC && value) {
     const UTC = moment.utc(value);
@@ -82,8 +82,8 @@ class DatePicker extends React.Component {
       attributes: attrs
     });
     if (typeof this.props.onChange === 'function') {
-      const dateTime = moment(new Date()).utc();
-      const { control } = this.props || {};
+      const { control, isUTC = true } = this.props || {};
+      const dateTime = isUTC ? moment(new Date()).utc() : moment(new Date());
       const { format = 'YYYY-MM-DD HH:mm:ss' } = control;
       args[1] = moment(args[1]).set({
         hour: dateTime.get('hour'),
