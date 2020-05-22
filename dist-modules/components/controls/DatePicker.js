@@ -41,18 +41,28 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 function transformAttrs(props) {
-  var _props$attributes = props.attributes,
-      value = _props$attributes.value,
-      minDate = _props$attributes.minDate,
-      maxDate = _props$attributes.maxDate;
+  var _ref = props || {},
+      control = _ref.control,
+      attributes = _ref.attributes;
 
+  var value = attributes.value,
+      minDate = attributes.minDate,
+      maxDate = attributes.maxDate;
+  var _control$isUTC = control.isUTC,
+      isUTC = _control$isUTC === undefined ? false : _control$isUTC;
+
+  var formatedValue = value ? new Date((0, _moment2.default)(value).format()) : undefined;
+  if (isUTC && value) {
+    var UTC = _moment2.default.utc(value);
+    var localTime = _moment2.default.utc(UTC).toDate();
+    formatedValue = new Date((0, _moment2.default)(localTime).format());
+  }
   var modifiedAttrs = {
-    value: value ? new Date((0, _moment2.default)(props.attributes.value).format()) : undefined,
-    minDate: minDate ? new Date((0, _moment2.default)(props.attributes.minDate).format()) : minDate === undefined ? undefined : new Date(),
-    maxDate: maxDate ? new Date((0, _moment2.default)(props.attributes.maxDate).format()) : maxDate === undefined ? undefined : new Date()
+    value: formatedValue,
+    minDate: minDate ? new Date((0, _moment2.default)(minDate).format()) : minDate === undefined ? undefined : new Date(),
+    maxDate: maxDate ? new Date((0, _moment2.default)(maxDate).format()) : maxDate === undefined ? undefined : new Date()
   };
-  var attrs = Object.assign({}, props.attributes, modifiedAttrs);
-  return attrs;
+  return Object.assign({}, props.attributes, modifiedAttrs);
 }
 
 /** DatePicker Component */
@@ -80,10 +90,12 @@ var DatePicker = function (_React$Component) {
     _this.clear = _this.clear.bind(_this);
     return _this;
   }
+  // eslint-disable-next-line camelcase
+
 
   _createClass(DatePicker, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(props) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(props) {
       var attrs = transformAttrs(props);
       this.setState({
         attributes: attrs,
@@ -106,11 +118,19 @@ var DatePicker = function (_React$Component) {
   }, {
     key: 'formatDate',
     value: function formatDate(date) {
-      var format = this.props.control.format;
+      var control = this.props.control;
+      var format = control.format;
+
+      var dateTime = (0, _moment2.default)(new Date());
+      var finalData = (0, _moment2.default)(date).set({
+        hour: dateTime.get('hour'),
+        minute: dateTime.get('minute'),
+        second: dateTime.get('second')
+      });
       if (format) {
-        return (0, _moment2.default)(date).format(format);
+        return finalData.format(format);
       }
-      return (0, _moment2.default)(date).format('L');
+      return finalData.format('L');
     }
   }, {
     key: 'onChange',
@@ -128,6 +148,19 @@ var DatePicker = function (_React$Component) {
       if (typeof this.props.onChange === 'function') {
         var _props2;
 
+        var dateTime = (0, _moment2.default)(new Date()).utc();
+
+        var _ref2 = this.props || {},
+            control = _ref2.control;
+
+        var _control$format = control.format,
+            format = _control$format === undefined ? 'YYYY-MM-DD HH:mm:ss' : _control$format;
+
+        args[1] = (0, _moment2.default)(args[1]).set({
+          hour: dateTime.get('hour'),
+          minute: dateTime.get('minute'),
+          second: dateTime.get('second')
+        }).format(format);
         (_props2 = this.props).onChange.apply(_props2, [this.props.control].concat(args));
       }
     }

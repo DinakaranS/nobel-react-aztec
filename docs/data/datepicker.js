@@ -33,9 +33,10 @@ const mui = [
     props: {
       id: 'formatted',
       hintText: 'Moment Formatted Date',
-      value: '01/26/2017'
+      value: '05/22/2020 12:00'
     },
-    format: 'll'
+    format: 'YYYY-MM-DD HH:mm:ss',
+    isUTC: true
   },
   {
     id: 'daterange',

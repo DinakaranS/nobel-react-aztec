@@ -7,18 +7,25 @@ import { grey700 } from 'material-ui/styles/colors';
 import TooltipComponent from '../TooltipComponent';
 
 function transformAttrs(props) {
+  const { control, attributes } = props || {};
   const {
     value,
     minDate,
     maxDate
-  } = props.attributes;
+  } = attributes;
+  const { isUTC = false } = control;
+  let formatedValue = value ? new Date(moment(value).format()) : undefined;
+  if (isUTC && value) {
+    const UTC = moment.utc(value);
+    const localTime = moment.utc(UTC).toDate();
+    formatedValue = new Date(moment(localTime).format());
+  }
   const modifiedAttrs = {
-    value: value ? new Date(moment(props.attributes.value).format()) : undefined,
-    minDate: minDate ? new Date(moment(props.attributes.minDate).format()) : (minDate === undefined) ? undefined : new Date(),
-    maxDate: maxDate ? new Date(moment(props.attributes.maxDate).format()) : (maxDate === undefined) ? undefined : new Date()
+    value: formatedValue,
+    minDate: minDate ? new Date(moment(minDate).format()) : (minDate === undefined) ? undefined : new Date(),
+    maxDate: maxDate ? new Date(moment(maxDate).format()) : (maxDate === undefined) ? undefined : new Date()
   };
-  const attrs = Object.assign({}, props.attributes, modifiedAttrs);
-  return attrs;
+  return Object.assign({}, props.attributes, modifiedAttrs);
 }
 
 /** DatePicker Component */
@@ -40,7 +47,8 @@ class DatePicker extends React.Component {
     this.formatDate = this.formatDate.bind(this);
     this.clear = this.clear.bind(this);
   }
-  componentWillReceiveProps(props) {
+  // eslint-disable-next-line camelcase
+  UNSAFE_componentWillReceiveProps(props) {
     const attrs = transformAttrs(props);
     this.setState({
       attributes: attrs,
@@ -53,11 +61,18 @@ class DatePicker extends React.Component {
     }
   }
   formatDate(date) {
-    const format = this.props.control.format;
+    const { control } = this.props
+    const { format } = control;
+    const dateTime = moment(new Date());
+    const finalData = moment(date).set({
+      hour: dateTime.get('hour'),
+      minute: dateTime.get('minute'),
+      second: dateTime.get('second')
+    })
     if (format) {
-      return moment(date).format(format);
+      return finalData.format(format);
     }
-    return moment(date).format('L');
+    return finalData.format('L');
   }
   onChange(...args) {
     const attrs = Object.assign({}, this.state.transformedAttrs, {
@@ -67,6 +82,14 @@ class DatePicker extends React.Component {
       attributes: attrs
     });
     if (typeof this.props.onChange === 'function') {
+      const dateTime = moment(new Date()).utc();
+      const { control } = this.props || {};
+      const { format = 'YYYY-MM-DD HH:mm:ss' } = control;
+      args[1] = moment(args[1]).set({
+        hour: dateTime.get('hour'),
+        minute: dateTime.get('minute'),
+        second: dateTime.get('second')
+      }).format(format);
       this.props.onChange(this.props.control, ...args);
     }
   }
