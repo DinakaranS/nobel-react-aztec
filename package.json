@@ -118,6 +118,6 @@
     "react-flexbox-grid": "^2.1.2",
     "react-select": "^2.2.0",
     "react-simple-tooltip": "^2.3.3",
-    "validator": "^6.1.0"
+    "validator": "^13.7.0"
   }
 }
